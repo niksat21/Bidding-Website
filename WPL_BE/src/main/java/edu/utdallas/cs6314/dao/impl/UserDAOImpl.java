@@ -29,4 +29,8 @@ public class UserDAOImpl implements UserDAO {
     public void deleteUser(Long userId) {
         userRepository.delete(userId);
     }
+
+//    public User logInUser(String username, String password) {
+//        // returning user
+//    }
 }

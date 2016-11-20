@@ -12,6 +12,8 @@ public class User {
     String email;
     String password;
     GregorianCalendar createdDate;
+    GregorianCalendar lastLogIn;
+    String lastLoginLocation;
 
     public Long getUserId() {
         return userId;
@@ -59,5 +61,13 @@ public class User {
 
     public void setCreatedDate(GregorianCalendar createdDate) {
         this.createdDate = createdDate;
+    }
+
+    public GregorianCalendar getLastLogIn() {
+        return lastLogIn;
+    }
+
+    public void setLastLogIn(GregorianCalendar lastLogIn) {
+        this.lastLogIn = lastLogIn;
     }
 }
