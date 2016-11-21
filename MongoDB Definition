@@ -1,0 +1,83 @@
+Please install MongoDB on your system, Keep it running 
+I used RoboMongo GUI for creating follwing, you can use below queries to do initial setup
+
+
+
+//create database
+use Bidding
+
+//Create Collections
+db.createCollection("User")
+db.createCollection("Products")
+db.createCollection("Reviews")
+db.createCollection("Orders")
+db.createCollection("OrderSummary")
+
+//User : FirstName,LastName,UserName,Password,EmailId,ContactNo,Dob,BillingAddress,ShippingAddress,LastLogin
+
+db.User.insert({
+   FirstName:'Ross' ,
+   LastName: 'Davis', 
+   UserName: 'Roda123',
+   Password: 'test123',
+   EmailId: 'ross.davis@gmail.com',
+   ContactNo: '1234567895',
+   Dob: '11/21/1988',
+   BillingAddress:'12,df ave., Dallas,Tx-12345',
+   ShippingAddress: '12,df ave., Dallas,Tx-12345',
+   LastLogin: '11/21/2016'
+   
+})
+
+//Products : ProductId,Name,Category,Price,Specifications
+
+db.Products.insert({
+   ProductId:'1' ,
+   Name: 'Iphone7', 
+   Category: 'Mobile Device',
+   Price: '$900',
+   Specifications: 'Capacity 32GB 128GB 256GB'
+   
+   
+})
+
+
+//Orders : OrderId,ProductId,Price,Quantity
+
+db.Orders.insert({
+   OrderId:'100' ,
+   ProductId: '1', 
+   Price: '$900',
+   Quantity: '2'
+   
+   
+})
+
+
+//OrderSummary : OrderId,UserName,TotalBill,ShipAddress,PaymentMethod,OrderDate,ShippedDate,OrderStatus
+
+
+db.OrderSummary.insert({
+   OrderId:'100' ,
+   UserName: 'roda123', 
+   TotalBill: '$1800',
+   ShipAddress: '12,df ave., Dallas,Tx-12345',
+   PaymentMethod:'Credit Card',
+   OrderDate:'10/21/2016',
+   ShippedDate:'10/24/2016',
+   OrderStatus:'Delivered'
+})
+
+
+
+//Reviews : ReviewId,ReviewText,UserName,ProductId,Rating,ReviewDate
+
+db.Reviews.insert({
+   ReviewId:'20' ,
+   ReviewText: 'The iPhone 7 and 7 Plus are deeply unusual devices. They are full of aggressive breaks from convention while wrapped in cases that look almost exactly like their two direct predecessors.', 
+   UserName: 'roda123',
+   ProductId: '1',
+   Rating:'4',
+   ReviewDate:'10/21/2016',
+  
+})
