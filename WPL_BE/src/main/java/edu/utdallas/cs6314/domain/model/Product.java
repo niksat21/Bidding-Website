@@ -5,11 +5,11 @@ package edu.utdallas.cs6314.domain.model;
  */
 public class Product {
 
-    String ProductID;
-    String Productname;
-    String ProductCategory;
-    String Price;
-    String Specification;
+    private String ProductID;
+    private String Productname;
+    private String ProductCategory;
+    private String Price;
+    private String Specification;
 
 
     public String getProductID() {
