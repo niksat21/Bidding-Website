@@ -2,6 +2,7 @@ package edu.utdallas.cs6314.domain.repository;
 
 import java.util.List;
 
+import edu.utdallas.cs6314.domain.model.Product;
 import edu.utdallas.cs6314.domain.model.User;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
@@ -9,7 +10,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 /**
  * Created by niksat21 on 11/21/2016.
  */
-public interface ProductRepository extends MongoRepository<User, Long> {
+public interface ProductRepository extends MongoRepository<Product, Long> {
     /*
      * Basic queries should work as is (delete, save, getOne by Id, etc.
      * For more complex queries, we'd add stuff here.
@@ -17,15 +18,15 @@ public interface ProductRepository extends MongoRepository<User, Long> {
 
     //ProductId,Name,Category,Price,Specifications
 
-    List<String> findByProductId(String ProductId);
+    List<Product> findByProductId(Long productId);
 
-    List<String> findByProductName(String ProductName);
+    List<Product> findByProductName(String productName);
 
-    List<String> findByProductCategory(String ProductCategory);
+    List<Product> findByProductCategory(String productCategory);
 
-    List<String> findByPrice(String Price);
+    List<Product> findByPrice(Long price);
 
-    List<String> findBySpecificationsd(String Specifications);
+    List<Product> findBySpecifications(String specifications);
 
 
 

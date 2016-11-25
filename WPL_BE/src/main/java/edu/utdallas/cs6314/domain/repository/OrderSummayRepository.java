@@ -17,22 +17,22 @@ public interface OrderSummayRepository extends MongoRepository<User, Long> {
 
     // OrderId,UserName,TotalBill,ShipAddress,PaymentMethod,OrderDate,ShippedDate,OrderStatus
 
-
-    List<String> findByUserName(String UserName);
-
-    List<String> findByOrderId(String OrderId);
-
-    List<String> findByTotalBill(String TotalBill);
-
-    List<String> findByShipAddress(String ShipAddress);
-
-    List<String> findByPaymentMethod(String PaymentMethod);
-
-    List<String> findByOrderDate(String OrderDate);
-
-    List<String> findByShippedDate(String ShippedDate);
-
-    List<String> findByOrderStatus(String OrderStatus);
+    //
+    //    List<String> findByUserName(String UserName);
+    //
+    //    List<String> findByOrderId(String OrderId);
+    //
+    //    List<String> findByTotalBill(String TotalBill);
+    //
+    //    List<String> findByShipAddress(String ShipAddress);
+    //
+    //    List<String> findByPaymentMethod(String PaymentMethod);
+    //
+    //    List<String> findByOrderDate(String OrderDate);
+    //
+    //    List<String> findByShippedDate(String ShippedDate);
+    //
+    //    List<String> findByOrderStatus(String OrderStatus);
 
 
 

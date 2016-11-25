@@ -5,52 +5,49 @@ package edu.utdallas.cs6314.domain.model;
  */
 public class Product {
 
-    private String ProductID;
-    private String Productname;
-    private String ProductCategory;
-    private String Price;
-    private String Specification;
+    private Long productId;
+    private String productName;
+    private String productCategory;
+    private Long price;
+    private String specifications;
 
-
-    public String getProductID() {
-        return ProductID;
+    public Long getProductID() {
+        return productId;
     }
 
-    public void setProductID(String productID) {
-        ProductID = productID;
+    public void setProductID(Long productId) {
+        this.productId = productId;
     }
 
-    public String getProductname() {
-        return Productname;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setProductname(String productname) {
-        Productname = productname;
+    public void setProductname(String productName) {
+        this.productName = productName;
     }
 
     public String getProductCategory() {
-        return ProductCategory;
+        return productCategory;
     }
 
     public void setProductCategory(String productCategory) {
-        ProductCategory = productCategory;
+        this.productCategory = productCategory;
     }
 
-    public String getPrice() {
-        return Price;
+    public Long getPrice() {
+        return price;
     }
 
-    public void setPrice(String price) {
-        Price = price;
+    public void setPrice(Long price) {
+        this.price = price;
     }
 
-    public String getSpecification() {
-        return Specification;
+    public String getSpecifications() {
+        return specifications;
     }
 
-    public void setSpecification(String specification) {
-        Specification = specification;
+    public void setSpecifications(String specifications) {
+        this.specifications = specifications;
     }
-
-
 }

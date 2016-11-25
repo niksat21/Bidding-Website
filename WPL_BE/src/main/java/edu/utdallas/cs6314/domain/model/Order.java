@@ -2,10 +2,16 @@ package edu.utdallas.cs6314.domain.model;
 
 import java.util.GregorianCalendar;
 
+import org.springframework.data.annotation.Id;
+
 public class Order {
+    @Id
+    Long orderId;
+    int quantity;
     User buyer;
     User seller;
     Bid winningBid;
+
     GregorianCalendar orderDate;
 
     public User getBuyer() {
