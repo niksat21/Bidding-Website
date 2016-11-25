@@ -11,6 +11,7 @@ public class Order {
     String buyerId;
     String sellerId;
     String winningBidId;
+    String productId;
     GregorianCalendar orderDate;
 
     public String getOrderId() {
@@ -51,6 +52,14 @@ public class Order {
 
     public void setWinningBidId(String winningBidId) {
         this.winningBidId = winningBidId;
+    }
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
     public GregorianCalendar getOrderDate() {

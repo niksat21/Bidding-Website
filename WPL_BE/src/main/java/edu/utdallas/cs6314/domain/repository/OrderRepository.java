@@ -10,22 +10,17 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 /**
  * Created by niksat21 on 11/21/2016.
  */
-public interface OrderRepository extends MongoRepository<Order, Long> {
+public interface OrderRepository extends MongoRepository<Order, String> {
     /*
      * Basic queries should work as is (delete, save, getOne by Id, etc.
      * For more complex queries, we'd add stuff here.
      */
 
-    // OrderId,ProductId,Price,Quantity
+    List<Order> findOrdersByBuyerId(String buyerId);
 
-    //    List<String> findByProductId(String productId);
+    List<Order> findOrdersBySellerId(String sellerId);
 
-    List<String> findByOrderId(Long orderId);
+    Order findOrderByWinningBidId(String winningBidId);
 
-    List<String> findByQuantity(int quantity);
-
-    //    List<String> findByPrice(String Price);
-
-
-
+    Order findOrderByProductId(String productId);
 }
