@@ -1,22 +1,37 @@
 package edu.utdallas.cs6314.domain.model;
 
+import org.springframework.data.annotation.Id;
+
 /**
  * Created by niksat21 on 11/21/2016.
  */
 public class Product {
-
+    @Id
     private String productId;
+    private String sellerId;
     private String productName;
     private String productCategory;
     private Long price;
     private String specifications;
 
-    public String getProductID() {
+    public String getProductId() {
         return productId;
     }
 
-    public void setProductID(String productId) {
+    public void setProductId(String productId) {
         this.productId = productId;
+    }
+
+    public String getSellerId() {
+        return sellerId;
+    }
+
+    public void setSellerId(String sellerId) {
+        this.sellerId = sellerId;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
     public String getProductName() {

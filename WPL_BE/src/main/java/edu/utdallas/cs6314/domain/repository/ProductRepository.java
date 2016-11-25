@@ -18,16 +18,13 @@ public interface ProductRepository extends MongoRepository<Product, String> {
 
     //ProductId,Name,Category,Price,Specifications
 
-    List<Product> findByProductId(Long productId);
+    List<Product> findProductsByProductName(String productName);
 
-    List<Product> findByProductName(String productName);
+    List<Product> findProductsByProductCategory(String productCategory);
 
-    List<Product> findByProductCategory(String productCategory);
+    List<Product> findProductsByPrice(Long price);
 
-    List<Product> findByPrice(Long price);
+    List<Product> findProductsBySpecifications(String specifications);
 
-    List<Product> findBySpecifications(String specifications);
-
-
-
+    List<Product> findProductsBySellerId(String sellerId);
 }
