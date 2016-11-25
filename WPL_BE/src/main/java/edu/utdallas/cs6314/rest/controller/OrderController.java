@@ -25,13 +25,13 @@ public class OrderController {
 
     @RequestMapping(value = "/{orderId}", method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Order> getOrder(@PathVariable Long orderId) {
+    public ResponseEntity<Order> getOrder(@PathVariable String orderId) {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @RequestMapping(value = "/user/{userId}", method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Order>> getOrdersForUser(@PathVariable Long userId) {
+    public ResponseEntity<List<Order>> getOrdersForUser(@PathVariable String userId) {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

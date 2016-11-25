@@ -25,13 +25,13 @@ public class ProductController {
 
     @RequestMapping(value = "/{productId}", method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Product> getProduct(@PathVariable Long productId) {
+    public ResponseEntity<Product> getProduct(@PathVariable String productId) {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @RequestMapping(value = "/user/{userId}", method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Product>> getAllProductsForUser(@PathVariable Long userId) {
+    public ResponseEntity<List<Product>> getAllProductsForUser(@PathVariable String userId) {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

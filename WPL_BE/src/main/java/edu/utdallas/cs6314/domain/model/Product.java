@@ -5,17 +5,17 @@ package edu.utdallas.cs6314.domain.model;
  */
 public class Product {
 
-    private Long productId;
+    private String productId;
     private String productName;
     private String productCategory;
     private Long price;
     private String specifications;
 
-    public Long getProductID() {
+    public String getProductID() {
         return productId;
     }
 
-    public void setProductID(Long productId) {
+    public void setProductID(String productId) {
         this.productId = productId;
     }
 

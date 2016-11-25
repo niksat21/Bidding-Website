@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
         return userDAO.getAllUsers();
     }
 
-    public User getUser(Long userId) {
+    public User getUser(String userId) {
         return userDAO.getUser(userId);
     }
 
@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
         return userDAO.saveUser(user);
     }
 
-    public void deleteUser(Long userId) {
+    public void deleteUser(String userId) {
         userDAO.deleteUser(userId);
     }
 }

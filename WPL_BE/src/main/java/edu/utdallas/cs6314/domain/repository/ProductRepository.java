@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 /**
  * Created by niksat21 on 11/21/2016.
  */
-public interface ProductRepository extends MongoRepository<Product, Long> {
+public interface ProductRepository extends MongoRepository<Product, String> {
     /*
      * Basic queries should work as is (delete, save, getOne by Id, etc.
      * For more complex queries, we'd add stuff here.

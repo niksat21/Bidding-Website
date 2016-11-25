@@ -6,36 +6,51 @@ import org.springframework.data.annotation.Id;
 
 public class Order {
     @Id
-    Long orderId;
+    String orderId;
     int quantity;
-    User buyer;
-    User seller;
-    Bid winningBid;
-
+    String buyerId;
+    String sellerId;
+    String winningBidId;
     GregorianCalendar orderDate;
 
-    public User getBuyer() {
-        return buyer;
+    public String getOrderId() {
+        return orderId;
     }
 
-    public void setBuyer(User buyer) {
-        this.buyer = buyer;
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 
-    public User getSeller() {
-        return seller;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setSeller(User seller) {
-        this.seller = seller;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
-    public Bid getWinningBid() {
-        return winningBid;
+    public String getBuyerId() {
+        return buyerId;
     }
 
-    public void setWinningBid(Bid winningBid) {
-        this.winningBid = winningBid;
+    public void setBuyerId(String buyerId) {
+        this.buyerId = buyerId;
+    }
+
+    public String getSellerId() {
+        return sellerId;
+    }
+
+    public void setSellerId(String sellerId) {
+        this.sellerId = sellerId;
+    }
+
+    public String getWinningBidId() {
+        return winningBidId;
+    }
+
+    public void setWinningBidId(String winningBidId) {
+        this.winningBidId = winningBidId;
     }
 
     public GregorianCalendar getOrderDate() {

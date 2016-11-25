@@ -7,9 +7,9 @@ import edu.utdallas.cs6314.domain.model.User;
 public interface UserDAO {
     List<User> getAllUsers();
 
-    User getUser(Long userId);
+    User getUser(String userId);
 
     User saveUser(User user);
 
-    void deleteUser(Long userId);
+    void deleteUser(String userId);
 }

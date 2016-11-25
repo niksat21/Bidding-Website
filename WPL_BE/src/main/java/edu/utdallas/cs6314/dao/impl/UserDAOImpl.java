@@ -18,7 +18,7 @@ public class UserDAOImpl implements UserDAO {
         return userRepository.findAll();
     }
 
-    public User getUser(Long userId) {
+    public User getUser(String userId) {
         return userRepository.findOne(userId);
     }
 
@@ -26,7 +26,7 @@ public class UserDAOImpl implements UserDAO {
         return userRepository.save(user);
     }
 
-    public void deleteUser(Long userId) {
+    public void deleteUser(String userId) {
         userRepository.delete(userId);
     }
 

@@ -6,7 +6,7 @@ import org.springframework.data.annotation.Id;
 
 public class User {
     @Id
-    Long userId;
+    String userId;
     String firstName;
     String lastName;
     String email;
@@ -15,11 +15,11 @@ public class User {
     GregorianCalendar lastLogIn;
     String lastLoginLocation;
 
-    public Long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

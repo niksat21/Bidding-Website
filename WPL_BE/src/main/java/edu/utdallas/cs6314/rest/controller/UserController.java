@@ -29,7 +29,7 @@ public class UserController {
 
     @RequestMapping(value = "/{userId}", method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<User> getUser(@PathVariable Long userId) {
+    public ResponseEntity<User> getUser(@PathVariable String userId) {
         User user = userService.getUser(userId);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
@@ -46,7 +46,7 @@ public class UserController {
 
     @RequestMapping(value = "/delete/{userId}", method = RequestMethod.DELETE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<User> deleteUser(@PathVariable Long userId) {
+    public ResponseEntity<User> deleteUser(@PathVariable String userId) {
         userService.deleteUser(userId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
