@@ -6,6 +6,8 @@ import edu.utdallas.cs6314.domain.model.Order;
 import edu.utdallas.cs6314.service.OrderService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @CrossOrigin
 @RestController
+@Cacheable("orders")
 @RequestMapping({"/api/orders"})
 public class OrderController {
 
@@ -65,6 +68,7 @@ public class OrderController {
         return new ResponseEntity<>(order, HttpStatus.OK);
     }
 
+    @CachePut
     @RequestMapping(value = "", method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Order> placeOrder(@RequestBody Order order) {

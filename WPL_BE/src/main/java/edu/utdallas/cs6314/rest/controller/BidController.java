@@ -9,6 +9,8 @@ import edu.utdallas.cs6314.domain.model.Bid;
 import edu.utdallas.cs6314.service.BidService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @CrossOrigin
 @RestController
+@Cacheable("bids")
 @RequestMapping({"/api/bids"})
 public class BidController {
     @Autowired
@@ -58,6 +61,7 @@ public class BidController {
         return new ResponseEntity<>(bids, HttpStatus.OK);
     }
 
+    @CachePut
     @RequestMapping(value = "/{bidId}", method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Bid> acceptBid(@PathVariable String bidId,
