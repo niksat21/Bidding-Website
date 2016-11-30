@@ -13,7 +13,7 @@ export class AppComponent {
   title: string;
 
   constructor(private userService:UserService) {
-    this.userService.GetUser("5838afa6ac06afad585d59ef")
+    this.userService.GetUser("583e1a9d871c010628cb0f30")
       .then((response) => {
         this.user = this.userService.loggedInUser;
         this.title = this.user.firstName;
