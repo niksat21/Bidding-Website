@@ -51,12 +51,21 @@
             <li role="separator" class="divider"></li>
             <li class="dropdown-header">My Account</li>
             <div id="navbar" class="navbar-collapse collapse">
-              <form class="navbar-form">
+              <!--<form class="navbar-form">-->
 
-                <input type="text" placeholder="Username" class="form-control">
-                <input type="password" placeholder="Password" class="form-control my_littlepad">
+                <!--<input type="text" placeholder="Username" class="form-control">-->
+                <!--<input type="password" placeholder="Password" class="form-control my_littlepad">-->
 
-                <button type="submit" class="btn btn-success my_littlepad">Sign in</button>
+                <!--<button type="submit" class="btn btn-success my_littlepad">Sign in</button>-->
+              <!--</form>-->
+              <form role="form" class ="navbar-form">
+                <div ng-control-group="credentials">
+                  <label for="username" class="form-control">Username</label>
+                  <input type="text" #username id="username" ng-control="username" required>
+                  <label for="password" class="form-control my_littlepad">Password</label>
+                  <input type="password" #password id="password" ng-control="password" required>
+                </div>
+                <button (click)="authenticate(username, password)" class="btn btn-success my_littlepad">Login!</button>
               </form>
 
             </div>
@@ -110,7 +119,7 @@
 
       <div class="row">
         <div class="card">
-          <img src="./assets/images/products/bose_headphone.jpg" alt="Card image cap" style="width:100;height:250px;">
+          <img src="./assets/images/products/bose_headphone.jpg" alt="Card image cap" style="width:100px;height:250px;">
           <p class="card-text">BOSE headphones</p>
           <div>
             <button class="btn btn-default btn-sm">
@@ -119,7 +128,7 @@
           </div>
         </div>
         <div class="card">
-          <img src="./assets/images/products/nike.jpg" alt="Card image cap" style="width:100;height:250px;">
+          <img src="./assets/images/products/nike.jpg" alt="Card image cap" style="width:100px;height:250px;">
           <p class="card-text">Nike shoes</p>
           <div>
             <button class="btn btn-default btn-sm">
@@ -128,7 +137,7 @@
           </div>
         </div>
         <div class="card">
-          <img src="./assets/images/products/ford_mustang.jpg" alt="Card image cap" style="width:100;height:250px;">
+          <img src="./assets/images/products/ford_mustang.jpg" alt="Card image cap" style="width:100px;height:250px;">
           <p class="card-text">Ford mustang</p>
           <div>
             <button class="btn btn-default btn-sm">
@@ -138,7 +147,7 @@
         </div>
 
         <div class="card">
-          <img src="./assets/images/products/jbl_headphones.jpg" alt="Card image cap" style="width:100;height:250px;">
+          <img src="./assets/images/products/jbl_headphones.jpg" alt="Card image cap" style="width:100px;height:250px;">
           <p class="card-text">JBL Headphones</p>
           <div>
             <button class="btn btn-default btn-sm">
@@ -147,7 +156,7 @@
           </div>
         </div>
         <div class="card">
-          <img src="./assets/images/products/rog.jpg" alt="Card image cap" style="width:100;height:250px;">
+          <img src="./assets/images/products/rog.jpg" alt="Card image cap" style="width:100px;height:250px;">
           <p class="card-text">ASUS ROG</p>
           <div>
             <button class="btn btn-default btn-sm">
@@ -156,7 +165,7 @@
           </div>
         </div>
         <div class="card">
-          <img src="./assets/images/products/puma.jpg" alt="Card image cap" style="width:100;height:250px;">
+          <img src="./assets/images/products/puma.jpg" alt="Card image cap" style="width:100px;height:250px;">
           <p class="card-text">Puma shoes</p>
           <div>
             <button class="btn btn-default btn-sm">

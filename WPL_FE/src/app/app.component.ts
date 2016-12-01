@@ -1,22 +1,20 @@
 import {Component} from '@angular/core';
-import {UserService} from "./services/user.service";
+import {LoginService} from "./services/Login/longin.service";
 import {User} from "./services/user";
+import {Login} from "./services/Login/login"
+
+// Add the RxJS Observable operators.
+import './rxjs-operators';
 
 @Component({
   selector: 'app-root',
+
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [UserService]
+  providers: [LoginService]
 })
 export class AppComponent {
-  user: User;
-  title: string;
+  login : Login
 
-  constructor(private userService:UserService) {
-    this.userService.GetUser("583e1a9d871c010628cb0f30")
-      .then((response) => {
-        this.user = this.userService.loggedInUser;
-        this.title = this.user.firstName;
-      });
-  }
+
 }

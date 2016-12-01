@@ -16,7 +16,7 @@ export class UserService {
 
   constructor(@Inject(Http) _http: Http) {
 
-    this.url = "http://localhost:8080/api/users";
+    this.url = "http://localhost:9000/api/users";
     this.http = _http;
 
     this.headers = new Headers();
@@ -41,6 +41,17 @@ export class UserService {
       .then((response) => {
         console.log(response);
         this.loggedInUser = response.json();
+      })
+      .catch(this.handleError);
+  }
+
+  public getAllUser(): Promise<User> {
+
+    return this.http.get(this.url + "/")
+      .toPromise()
+      .then((response) => {
+          console.log(response);
+          this.loggedInUser = response.json();
       })
       .catch(this.handleError);
   }
