@@ -4,14 +4,13 @@ import java.util.GregorianCalendar;
 
 import org.springframework.data.annotation.Id;
 
-public class User {
+public class ExistingUser {
     @Id
     String userId;
     String userName;
     String firstName;
     String lastName;
     String email;
-    String password;
     GregorianCalendar createdDate;
     GregorianCalendar lastLogIn;
     String lastLoginLocation;
@@ -54,14 +53,6 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public GregorianCalendar getCreatedDate() {

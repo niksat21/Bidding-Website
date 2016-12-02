@@ -13,6 +13,7 @@ public class Product {
     private String productCategory;
     private Long price;
     private String specifications;
+    private String productLocation;
 
     public String getProductId() {
         return productId;

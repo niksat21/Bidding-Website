@@ -37,15 +37,18 @@ public class UserController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @CachePut
+    //    @CachePut
     @RequestMapping(value = "", method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> saveUser(@RequestBody @Valid User user) {
-        HttpStatus httpStatus = HttpStatus.OK;
-        if (user.getUserId() != null && userService.getUser(user.getUserId()) != null) {
+        HttpStatus httpStatus;
+        user = userService.saveUser(user);
+        if (user == null) {
+            httpStatus = HttpStatus.BAD_REQUEST;
+        } else {
             httpStatus = HttpStatus.CREATED;
         }
-        return new ResponseEntity<>(userService.saveUser(user), httpStatus);
+        return new ResponseEntity<>(user, httpStatus);
     }
 
     @RequestMapping(value = "/delete/{userId}", method = RequestMethod.DELETE,
