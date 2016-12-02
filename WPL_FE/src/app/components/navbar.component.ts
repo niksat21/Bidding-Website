@@ -2,7 +2,7 @@
  * Created by niksat21 on 12/1/2016.
  */
 import {Component} from '@angular/core';
-
+import {LoginComponent} from './login.component'
 
 @Component({
 
@@ -35,13 +35,7 @@ import {Component} from '@angular/core';
                             <li role="separator" class="divider"></li>
                             <li class="dropdown-header">My Account</li>
                             <div id="navbar1" class="navbar-collapse collapse">
-                                <form class="navbar-form">
-
-                                    <input type="text" placeholder="Username" class="form-control">
-                                    <input type="password" placeholder="Password" class="form-control my_littlepad">
-
-                                    <button type="submit" class="btn btn-success my_littlepad">Sign in</button>
-                                </form>
+                                <login></login>
              
                             </div>
 

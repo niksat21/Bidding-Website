@@ -4,19 +4,25 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { DataTableModule} from "angular2-datatable";
 import { AppComponent } from './app.component';
-import {NavBarComponent} from './components/navbar.component'
-
+import {NavBarComponent} from './components/navbar.component';
+import {LoginComponent} from './components/login.component'
+import {ReactiveFormsModule,FormGroup, FormControl ,FormBuilder,Validators } from '@angular/forms';
+import {carouselComponent} from "./components/carousel.component";
+import {fluidComponent} from "./components/fluid.component";
+import {dashboardListComponent} from "./components/dashboardList.component";
 
 
 @NgModule({
   declarations: [
-    AppComponent,NavBarComponent
+    AppComponent,NavBarComponent,LoginComponent,carouselComponent,fluidComponent,dashboardListComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    DataTableModule
+    DataTableModule,
+    ReactiveFormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
