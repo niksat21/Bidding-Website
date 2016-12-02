@@ -26,7 +26,7 @@ export class LoginService {
   }
 
   public authenticate(username,password){
-
+    console.log("came here in authenticate")
     console.log(username,password);
 
     let creds = JSON.stringify({ username: username.value, password: password.value });
@@ -36,6 +36,7 @@ export class LoginService {
 
     this.http.post(String(this.url), creds, {
       headers: headers
+
     })
       .subscribe(
         data => {
