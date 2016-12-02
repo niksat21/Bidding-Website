@@ -44,10 +44,16 @@ public class ProductController {
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
-    @CachePut
+    //    @CachePut
     @RequestMapping(value = "", method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Product> postNewProduct(@RequestBody @Valid Product product) {
         return new ResponseEntity<>(productService.addProduct(product), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/search/{searchText}", method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Product>> searchForProducts(@PathVariable String searchText) {
+        return new ResponseEntity<>(productService.searchForProducts(searchText), HttpStatus.OK);
     }
 }

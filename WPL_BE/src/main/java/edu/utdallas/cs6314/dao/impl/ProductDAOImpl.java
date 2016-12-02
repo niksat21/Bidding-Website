@@ -1,6 +1,7 @@
 package edu.utdallas.cs6314.dao.impl;
 
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import edu.utdallas.cs6314.dao.ProductDAO;
 import edu.utdallas.cs6314.domain.model.Product;
@@ -28,5 +29,27 @@ public class ProductDAOImpl implements ProductDAO {
 
     public Product addProduct(Product product) {
         return productRepository.save(product);
+    }
+
+    public List<Product> searchForProducts(String searchText) {
+        HashMap<Product, Integer> products = new HashMap<>();
+
+        List<String> searchWords = Arrays.asList(searchText.split(" "));
+
+        for (String searchWord : searchWords) {
+            List<Product> results =
+                    productRepository.findProductsByProductNameContainingIgnoreCase(searchWord);
+            for (Product result : results) {
+
+                if (!products.containsKey(result)) {
+                    products.put(result, 0);
+                }
+                products.put(result, products.get(result) + 1);
+            }
+        }
+
+        return products.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .map(Map.Entry::getKey).collect(Collectors.toList());
     }
 }
