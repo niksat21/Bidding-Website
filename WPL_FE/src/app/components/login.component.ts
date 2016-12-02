@@ -6,36 +6,51 @@ import {Validators, FormBuilder} from "@angular/forms";
 import { FormGroup, FormControl } from '@angular/forms';
 
 
+
 @Component({
 
 
   selector: 'login',
   template : `
-  <form [formGroup]="loginForm" (ngSubmit)="doLogin($event)">
-    <input [formControl]="username" type="username" placeholder="Your username">
-    <input [formControl]="password" type="password" placeholder="Your password">
-    <button type="submit">Log in</button>
-  </form>
+  <form class="navbar-form" role="form" (submit)="login($event, username.value, password.value)">
+        <div class="form-group">
+            
+            <input  class="form-control" type="text" #username  id="username" placeholder="Username">
+        </div>
+        <div class="form-group">
+            
+            <input type="password" #password class="form-control my_littlepad" id="password" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-success my_littlepad">Submit</button>
+        
+    </form>
 `
 
 })
 export class LoginComponent {
 
-  public loginForm = this.fb.group({
-    username: ['', Validators.required],
-    password: ['', Validators.required],
-  });
 
-  constructor(public fb: FormBuilder) {
+
+  constructor() {
   }
 
-  doLogin(event) {
-    console.log(event);
-    console.log(this.loginForm.value.password,this.loginForm.value.password);
-    let usernameRcvd = this.loginForm.controls.valueOf.arguments.username;
-    let passwordRcvd = this.loginForm.controls.valueOf.arguments.password;
-    console.log(usernameRcvd, passwordRcvd);
+  login(event, username, password) {
 
-
+    console.log(username,password);
+    // event.preventDefault();
+    // let body = JSON.stringify({ username, password });
+    // this.http.post('http://localhost:3001/sessions/create', body)
+    //   .subscribe(
+    //     response => {
+    //       localStorage.setItem('id_token', response.json().id_token);
+    //       this.router.navigate(['home']);
+    //     },
+    //     error => {
+    //       alert(error.text());
+    //       console.log(error.text());
+    //     }
+    //   );
   }
+
+
 }
