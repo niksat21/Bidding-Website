@@ -3,6 +3,8 @@ package edu.utdallas.cs6314.service.Impl;
 import java.util.List;
 
 import edu.utdallas.cs6314.dao.UserDAO;
+import edu.utdallas.cs6314.domain.model.AuthenticationInfo;
+import edu.utdallas.cs6314.domain.model.ExistingUser;
 import edu.utdallas.cs6314.domain.model.User;
 import edu.utdallas.cs6314.service.UserService;
 
@@ -24,6 +26,10 @@ public class UserServiceImpl implements UserService {
 
     public User saveUser(User user) {
         return userDAO.saveUser(user);
+    }
+
+    public ExistingUser loginUser(AuthenticationInfo authenticationInfo) {
+        return userDAO.getUser(authenticationInfo);
     }
 
     public void deleteUser(String userId) {

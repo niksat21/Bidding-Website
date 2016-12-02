@@ -13,4 +13,6 @@ public interface ProductDAO {
     List<Product> getAllProductsBySellerId(String sellerId);
 
     Product addProduct(Product product);
+
+    List<Product> searchForProducts(String searchText);
 }

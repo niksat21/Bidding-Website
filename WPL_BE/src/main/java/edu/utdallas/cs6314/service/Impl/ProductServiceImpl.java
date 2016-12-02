@@ -31,4 +31,8 @@ public class ProductServiceImpl implements ProductService {
     public Product addProduct(Product product) {
         return productDAO.addProduct(product);
     }
+
+    public List<Product> searchForProducts(String searchText) {
+        return productDAO.searchForProducts(searchText);
+    }
 }

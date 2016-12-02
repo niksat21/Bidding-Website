@@ -3,8 +3,11 @@ package edu.utdallas.cs6314.rest.controller;
 import javax.validation.Valid;
 
 import edu.utdallas.cs6314.domain.model.AuthenticationInfo;
+import edu.utdallas.cs6314.domain.model.ExistingUser;
 import edu.utdallas.cs6314.domain.model.User;
+import edu.utdallas.cs6314.service.UserService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -18,10 +21,18 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping({"/api/auth"})
 public class AuthenticationController {
 
+    @Autowired
+    UserService userService;
+
     @RequestMapping(value = "/login", method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<User> login(@RequestBody @Valid AuthenticationInfo authenticationInfo) {
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<ExistingUser> login(
+            @RequestBody @Valid AuthenticationInfo authenticationInfo) {
+        ExistingUser existingUser = userService.loginUser(authenticationInfo);
+        if (existingUser == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(existingUser, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.POST,
