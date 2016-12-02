@@ -4,7 +4,7 @@
 import {Component} from '@angular/core';
 import {Validators, FormBuilder} from "@angular/forms";
 import { FormGroup, FormControl } from '@angular/forms';
-
+import {Http, Headers, RequestOptions} from '@angular/http';
 
 
 @Component({
@@ -31,25 +31,30 @@ export class LoginComponent {
 
 
 
-  constructor() {
+  constructor(public http : Http) {
   }
 
   login(event, username, password) {
 
     console.log(username,password);
-    // event.preventDefault();
-    // let body = JSON.stringify({ username, password });
-    // this.http.post('http://localhost:3001/sessions/create', body)
-    //   .subscribe(
-    //     response => {
-    //       localStorage.setItem('id_token', response.json().id_token);
-    //       this.router.navigate(['home']);
-    //     },
-    //     error => {
-    //       alert(error.text());
-    //       console.log(error.text());
-    //     }
-    //   );
+    event.preventDefault();
+    let body = JSON.stringify({username,password });
+    console.log('json stringify body posted: ',body);
+
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    this.http.post('http://localhost:9000/api/auth/login', body,options)
+      .subscribe(
+        response => {
+          localStorage.setItem('id_token', response.json().id_token);
+
+        },
+        error => {
+          alert(error.text());
+          console.log(error.text());
+        }
+      );
   }
 
 
