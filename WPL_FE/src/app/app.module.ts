@@ -15,6 +15,7 @@ import {beforeLoginComponent} from "./components/beforeLogin.component";
 import {afterLoginComponent} from "./components/afterLogin.component";
 import {afterNavBarComponent} from "./components/navbarAfter.component";
 import {LogoutComponent} from "./components/logout.component";
+import {NavBarRegComponent} from "./components/navbar-reg.component";
 
 
 
@@ -22,7 +23,7 @@ import {LogoutComponent} from "./components/logout.component";
   declarations: [
     AppComponent,NavBarBeforeComponent,LoginComponent,carouselComponent,
     fluidComponent,dashboardListComponent,beforeLoginComponent,afterLoginComponent,afterNavBarComponent,
-    LogoutComponent
+    LogoutComponent,NavBarRegComponent
   ],
 
 
