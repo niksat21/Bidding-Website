@@ -10,7 +10,7 @@ import {ReactiveFormsModule,FormGroup, FormControl ,FormBuilder,Validators } fro
 import {carouselComponent} from "./components/carousel.component";
 import {fluidComponent} from "./components/fluid.component";
 import {dashboardListComponent} from "./components/dashboardList.component";
-
+import {RouterModule} from '@angular/router'
 
 
 @NgModule({
@@ -23,10 +23,13 @@ import {dashboardListComponent} from "./components/dashboardList.component";
     HttpModule,
     DataTableModule,
     ReactiveFormsModule,
-    DataTableModule
+    DataTableModule,
+    RouterModule
 
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+}

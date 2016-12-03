@@ -1,11 +1,11 @@
 /**
  * Created by niksat21 on 12/2/2016.
  */
-import {Component} from '@angular/core';
+import {Component, NgModule} from '@angular/core';
 import {Validators, FormBuilder} from "@angular/forms";
 import { FormGroup, FormControl } from '@angular/forms';
 import {Http, Headers, RequestOptions} from '@angular/http';
-
+import {Router} from '@angular/router';
 
 @Component({
 
@@ -27,11 +27,16 @@ import {Http, Headers, RequestOptions} from '@angular/http';
 `
 
 })
+
+@NgModule({
+
+  imports : [Router]
+})
 export class LoginComponent {
 
 
 
-  constructor(public http : Http) {
+  constructor(public http : Http,public router : Router) {
   }
 
   login(event, userName, password) {
@@ -48,6 +53,7 @@ export class LoginComponent {
       .subscribe(
         response => {
           localStorage.setItem('id_token', response.json().id_token);
+          this.router.navigateByUrl('/');
 
         },
         error => {

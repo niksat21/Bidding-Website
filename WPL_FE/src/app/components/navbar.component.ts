@@ -2,7 +2,8 @@
  * Created by niksat21 on 12/1/2016.
  */
 import {Component} from '@angular/core';
-import {LoginComponent} from './login.component'
+import {LoginComponent} from './login.component';
+import {Router} from '@angular/router'
 
 @Component({
 
@@ -51,6 +52,10 @@ import {LoginComponent} from './login.component'
 
 })
 export class NavBarComponent {
+
+  constructor(public router: Router) {
+
+  }
 
 
 }

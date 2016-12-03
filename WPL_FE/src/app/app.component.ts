@@ -6,7 +6,7 @@ import { carouselComponent } from './components/carousel.component'
 import {ReactiveFormsModule,FormGroup, FormControl ,FormBuilder,Validators } from '@angular/forms';
 import {DataTableModule} from "angular2-datatable";
 import { BrowserModule } from '@angular/platform-browser';
-
+import {Router,RouterModule} from '@angular/router';
 import {User} from "./services/user";
 import {Login} from "./services/Login/login"
 import {Logout} from "./services/Logout/logout"
@@ -31,7 +31,8 @@ import {dashboardListComponent} from "./components/dashboardList.component";
           <carousel></carousel>
         <fluid></fluid>
         <dashboardlist></dashboardlist>
-        `
+        
+               `
     ,
 })
 
@@ -39,9 +40,12 @@ import {dashboardListComponent} from "./components/dashboardList.component";
 
   declarations: [AppComponent,NavBarComponent,LoginComponent,carouselComponent,fluidComponent,dashboardListComponent],
   bootstrap : [AppComponent],
-  imports : [ReactiveFormsModule,BrowserModule,FormGroup,FormControl,FormBuilder,Validators,DataTableModule]
+  imports : [ReactiveFormsModule,BrowserModule,FormGroup,FormControl,FormBuilder,Validators,DataTableModule,Router,RouterModule]
 
 })
 
 
-export class AppComponent {}
+
+export class AppComponent {
+  constructor(public router : Router){}
+}
