@@ -10,12 +10,12 @@ import {ReactiveFormsModule,FormGroup, FormControl ,FormBuilder,Validators } fro
 import {carouselComponent} from "./components/carousel.component";
 import {fluidComponent} from "./components/fluid.component";
 import {dashboardListComponent} from "./components/dashboardList.component";
-import {SortableTableComponent} from "./components/sortableTable.component";
+
 
 
 @NgModule({
   declarations: [
-    AppComponent,NavBarComponent,LoginComponent,carouselComponent,fluidComponent,dashboardListComponent,SortableTableComponent
+    AppComponent,NavBarComponent,LoginComponent,carouselComponent,fluidComponent,dashboardListComponent
   ],
   imports: [
     BrowserModule,
