@@ -19,7 +19,7 @@ import {LogoutService} from "./services/Logout/logout.service";
 import {NgModel} from "@angular/forms";
 import {fluidComponent} from "./components/fluid.component";
 import {dashboardListComponent} from "./components/dashboardList.component";
-import {SortableTableComponent} from "./components/sortableTable.component";
+
 
 
 @Component({
@@ -37,7 +37,7 @@ import {SortableTableComponent} from "./components/sortableTable.component";
 
 @NgModule({
 
-  declarations: [AppComponent,NavBarComponent,LoginComponent,carouselComponent,fluidComponent,dashboardListComponent,SortableTableComponent],
+  declarations: [AppComponent,NavBarComponent,LoginComponent,carouselComponent,fluidComponent,dashboardListComponent],
   bootstrap : [AppComponent],
   imports : [ReactiveFormsModule,BrowserModule,FormGroup,FormControl,FormBuilder,Validators,DataTableModule]
 

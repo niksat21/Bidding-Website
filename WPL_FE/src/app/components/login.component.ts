@@ -34,11 +34,11 @@ export class LoginComponent {
   constructor(public http : Http) {
   }
 
-  login(event, username, password) {
+  login(event, userName, password) {
 
-    console.log(username,password);
+    console.log(userName,password);
     event.preventDefault();
-    let body = JSON.stringify({username,password });
+    let body = JSON.stringify({userName,password });
     console.log('json stringify body posted: ',body);
 
     let headers = new Headers({ 'Content-Type': 'application/json' });
