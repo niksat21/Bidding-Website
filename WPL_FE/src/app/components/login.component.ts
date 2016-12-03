@@ -40,7 +40,7 @@ export class LoginComponent {
 
 
 
-  constructor(public http : Http) {
+  constructor(public http : Http, private router : Router) {
   }
 
   login(event, userName, password) {
@@ -57,7 +57,7 @@ export class LoginComponent {
       .subscribe(
         response => {
           localStorage.setItem('id_token', response.json().id_token);
-          // this.router.navigateByUrl('/');
+          this.router.navigateByUrl('/register');
 
         },
         error => {
