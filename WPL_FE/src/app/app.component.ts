@@ -4,7 +4,7 @@ import {LoginComponent} from './components/login.component'
 import { carouselComponent } from './components/carousel.component'
 
 import {ReactiveFormsModule,FormGroup, FormControl ,FormBuilder,Validators } from '@angular/forms';
-
+import {DataTableModule} from "angular2-datatable";
 import { BrowserModule } from '@angular/platform-browser';
 
 import {User} from "./services/user";
@@ -19,6 +19,7 @@ import {LogoutService} from "./services/Logout/logout.service";
 import {NgModel} from "@angular/forms";
 import {fluidComponent} from "./components/fluid.component";
 import {dashboardListComponent} from "./components/dashboardList.component";
+import {SortableTableComponent} from "./components/sortableTable.component";
 
 
 @Component({
@@ -26,7 +27,7 @@ import {dashboardListComponent} from "./components/dashboardList.component";
   selector: 'app-root',
   template : `
           
-          <nav-bar></nav-bar>
+         <nav-bar></nav-bar>
           <carousel></carousel>
         <fluid></fluid>
         <dashboardlist></dashboardlist>
@@ -36,9 +37,9 @@ import {dashboardListComponent} from "./components/dashboardList.component";
 
 @NgModule({
 
-  declarations: [AppComponent,NavBarComponent,LoginComponent,carouselComponent,fluidComponent,dashboardListComponent],
+  declarations: [AppComponent,NavBarComponent,LoginComponent,carouselComponent,fluidComponent,dashboardListComponent,SortableTableComponent],
   bootstrap : [AppComponent],
-  imports : [ReactiveFormsModule,BrowserModule,FormGroup,FormControl,FormBuilder,Validators]
+  imports : [ReactiveFormsModule,BrowserModule,FormGroup,FormControl,FormBuilder,Validators,DataTableModule]
 
 })
 
