@@ -4,19 +4,28 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { DataTableModule} from "angular2-datatable";
 import { AppComponent } from './app.component';
-import {NavBarComponent} from './components/navbar.component';
+import { NavBarBeforeComponent} from './components/navbarBefore.component';
 import {LoginComponent} from './components/login.component'
 import {ReactiveFormsModule,FormGroup, FormControl ,FormBuilder,Validators } from '@angular/forms';
 import {carouselComponent} from "./components/carousel.component";
 import {fluidComponent} from "./components/fluid.component";
 import {dashboardListComponent} from "./components/dashboardList.component";
-import {RouterModule} from '@angular/router'
+import {RouterModule, Routes} from '@angular/router'
+import {beforeLoginComponent} from "./components/beforeLogin.component";
+import {afterLoginComponent} from "./components/afterLogin.component";
+import {afterNavBarComponent} from "./components/navbarAfter.component";
+import {LogoutComponent} from "./components/logout.component";
+
 
 
 @NgModule({
   declarations: [
-    AppComponent,NavBarComponent,LoginComponent,carouselComponent,fluidComponent,dashboardListComponent
+    AppComponent,NavBarBeforeComponent,LoginComponent,carouselComponent,
+    fluidComponent,dashboardListComponent,beforeLoginComponent,afterLoginComponent,afterNavBarComponent,
+    LogoutComponent
   ],
+
+
   imports: [
     BrowserModule,
     FormsModule,
@@ -24,7 +33,8 @@ import {RouterModule} from '@angular/router'
     DataTableModule,
     ReactiveFormsModule,
     DataTableModule,
-    RouterModule
+
+
 
   ],
   providers: [],

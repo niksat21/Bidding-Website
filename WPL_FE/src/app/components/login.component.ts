@@ -22,21 +22,21 @@ import {Router} from '@angular/router';
             <input type="password" #password class="form-control my_littlepad" id="password" placeholder="Password">
         </div>
         <button type="submit" class="btn btn-success my_littlepad">Submit</button>
-        
+        <li><a href="./assets/pages/newuser_form.html">Register</a></li>
     </form>
 `
 
 })
 
-@NgModule({
-
-  imports : [Router]
-})
+// @NgModule({
+//
+//   imports : [Router]
+// })
 export class LoginComponent {
 
 
 
-  constructor(public http : Http,public router : Router) {
+  constructor(public http : Http) {
   }
 
   login(event, userName, password) {
@@ -53,7 +53,7 @@ export class LoginComponent {
       .subscribe(
         response => {
           localStorage.setItem('id_token', response.json().id_token);
-          this.router.navigateByUrl('/');
+          // this.router.navigateByUrl('/');
 
         },
         error => {

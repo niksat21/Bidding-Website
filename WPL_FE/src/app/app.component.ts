@@ -1,5 +1,5 @@
 import {Component,NgModule } from '@angular/core';
-import { NavBarComponent } from './components/navbar.component'
+import { NavBarBeforeComponent } from './components/navbarBefore.component'
 import {LoginComponent} from './components/login.component'
 import { carouselComponent } from './components/carousel.component'
 
@@ -19,18 +19,18 @@ import {LogoutService} from "./services/Logout/logout.service";
 import {NgModel} from "@angular/forms";
 import {fluidComponent} from "./components/fluid.component";
 import {dashboardListComponent} from "./components/dashboardList.component";
-
+import { beforeLoginComponent} from "./components/beforeLogin.component";
+import {afterLoginComponent} from "./components/afterLogin.component";
+import { afterNavBarComponent} from "./components/navbarAfter.component";
+import {LogoutComponent} from "./components/logout.component";
 
 
 @Component({
 
   selector: 'app-root',
   template : `
-          
-         <nav-bar></nav-bar>
-          <carousel></carousel>
-        <fluid></fluid>
-        <dashboardlist></dashboardlist>
+          <!--<after-login></after-login>-->
+            <before-login></before-login>
         
                `
     ,
@@ -38,14 +38,16 @@ import {dashboardListComponent} from "./components/dashboardList.component";
 
 @NgModule({
 
-  declarations: [AppComponent,NavBarComponent,LoginComponent,carouselComponent,fluidComponent,dashboardListComponent],
+  declarations: [AppComponent,NavBarBeforeComponent,LoginComponent,
+    carouselComponent,fluidComponent,dashboardListComponent,beforeLoginComponent,afterLoginComponent,afterNavBarComponent,
+    LogoutComponent],
   bootstrap : [AppComponent],
-  imports : [ReactiveFormsModule,BrowserModule,FormGroup,FormControl,FormBuilder,Validators,DataTableModule,Router,RouterModule]
+  imports : [ReactiveFormsModule,BrowserModule,FormGroup,FormControl,FormBuilder,Validators,DataTableModule]
 
 })
 
 
 
 export class AppComponent {
-  constructor(public router : Router){}
+
 }

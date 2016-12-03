@@ -1,4 +1,8 @@
- /**
+/**
+ * Created by niksat21 on 12/3/2016.
+ */
+
+/**
  * Created by niksat21 on 12/1/2016.
  */
 import {Component} from '@angular/core';
@@ -8,7 +12,7 @@ import {Router} from '@angular/router'
 @Component({
 
 
-  selector: 'nav-bar',
+  selector: 'nav-bar-after',
   template : `
   <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
@@ -24,24 +28,8 @@ import {Router} from '@angular/router'
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">HOME</a></li>
-                    <li><a href="#/">About US</a></li>
-                    <li><a href="./assets/pages/listing.html">All Listings</a></li>
-
-                    <li><a href="./assets/pages/newuser_form.html">Register</a></li>
-                    <li><a href="#/">Contact US</a></li>
                     <li><a href="./assets/pages/cartTest.html">my cart</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li role="separator" class="divider"></li>
-                            <li class="dropdown-header">My Account</li>
-                            <div id="navbar1" class="navbar-collapse collapse">
-                                <login></login>
-             
-                            </div>
-
-                        </ul>
-                    </li>
+                    <li><logout></logout></li>>
                 </ul>
 
             </div>
@@ -51,11 +39,8 @@ import {Router} from '@angular/router'
 `
 
 })
-export class NavBarComponent {
+export class afterNavBarComponent {
 
-  constructor(public router: Router) {
-
-  }
 
 
 }
