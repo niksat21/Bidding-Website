@@ -24,7 +24,7 @@ import {routingConfigModule, routingComps} from "./components/router-config";
   declarations: [
     AppComponent,NavBarBeforeComponent,LoginComponent,carouselComponent,
     fluidComponent,dashboardListComponent,beforeLoginComponent,afterLoginComponent,afterNavBarComponent,
-    LogoutComponent,NavBarRegComponent,routingComps
+    LogoutComponent,NavBarRegComponent,routingComps,NavBarRegComponent
   ],
 
 

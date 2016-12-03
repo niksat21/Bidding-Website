@@ -6,6 +6,10 @@ import {Validators, FormBuilder} from "@angular/forms";
 import { FormGroup, FormControl } from '@angular/forms';
 import {Http, Headers, RequestOptions} from '@angular/http';
 import {Router} from '@angular/router';
+import {NavBarRegComponent} from "./navbar-reg.component";
+
+
+
 
 @Component({
 
@@ -22,7 +26,7 @@ import {Router} from '@angular/router';
             <input type="password" #password class="form-control my_littlepad" id="password" placeholder="Password">
         </div>
         <button type="submit" class="btn btn-success my_littlepad">Submit</button>
-        <li><a routerlink="/register">Register</a></li>
+        <li><a href="/register">Register</a></li>
     </form>
 `
 

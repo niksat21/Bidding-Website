@@ -31,7 +31,7 @@ import {NavBarRegComponent} from "./components/navbar-reg.component";
   selector: 'app-root',
   template : `
           <!--<after-login></after-login>-->
-          <before-login></before-login>
+          <!--<before-login></before-login>-->
             
             <div><router-outlet></router-outlet></div>
                `

@@ -13,16 +13,20 @@
 /**
  * Created by niksat21 on 12/1/2016.
  */
-import {Component} from '@angular/core';
+import {Component, NgModule} from '@angular/core';
+
 import {LoginComponent} from './login.component';
 import {Router} from '@angular/router'
+import {NavBarRegComponent} from "./navbar-reg.component";
+
+
 
 @Component({
 
 
   selector: 'app-root',
   template : `
-        <!--<nav-bar-Reg></nav-bar-Reg>-->
+        <nav-bar-reg></nav-bar-reg>
         <div >
     <h1 class="my_margin_form">Need a account?</h1>
 	<fieldset name="Contact Details:">

@@ -1,9 +1,11 @@
  /**
  * Created by niksat21 on 12/1/2016.
  */
-import {Component} from '@angular/core';
+import {Component, NgModule} from '@angular/core';
+import { NavBarRegComponent} from './navbar-reg.component'
 import {LoginComponent} from './login.component';
 import {Router} from '@angular/router'
+
 
 @Component({
 

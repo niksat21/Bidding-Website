@@ -27,11 +27,11 @@ import {Router} from '@angular/router'
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">forever Shopping</a>
+                <a class="navbar-brand" href="/home">forever Shopping</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">HOME</a></li>
+                    <li class="active"><a href="/home">HOME</a></li>
                 </ul>
 
             </div>
