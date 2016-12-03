@@ -20,7 +20,7 @@ import {Component} from '@angular/core';
   </ol>
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <img class="first-slide" src="./assets/images/landing page/carouselimage.jpg" alt="First slide" style="width:500px;height:550px;">
+      <img class="first-slide" src="./assets/images/landing_page/carouselimage.jpg" alt="First slide" style="width:500px;height:550px;">
       <div class="container">
         <div class="carousel-caption">
           <h1>Always in style!</h1>

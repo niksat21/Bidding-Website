@@ -19,6 +19,7 @@ import {LogoutService} from "./services/Logout/logout.service";
 import {NgModel} from "@angular/forms";
 import {fluidComponent} from "./components/fluid.component";
 import {dashboardListComponent} from "./components/dashboardList.component";
+import {LoggedInDashbaordComponent} from "./components/loggedInDashboard.component";
 
 
 @Component({
@@ -36,7 +37,7 @@ import {dashboardListComponent} from "./components/dashboardList.component";
 
 @NgModule({
 
-  declarations: [AppComponent,NavBarComponent,LoginComponent,carouselComponent,fluidComponent,dashboardListComponent],
+  declarations: [AppComponent,NavBarComponent,LoginComponent,carouselComponent,fluidComponent,dashboardListComponent,LoggedInDashbaordComponent],
   bootstrap : [AppComponent],
   imports : [ReactiveFormsModule,BrowserModule,FormGroup,FormControl,FormBuilder,Validators]
 
