@@ -22,7 +22,7 @@ import {Router} from '@angular/router';
             <input type="password" #password class="form-control my_littlepad" id="password" placeholder="Password">
         </div>
         <button type="submit" class="btn btn-success my_littlepad">Submit</button>
-        <li><a href="./assets/pages/newuser_form.html">Register</a></li>
+        <li><a routerlink="/register">Register</a></li>
     </form>
 `
 

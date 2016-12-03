@@ -23,12 +23,12 @@ import {Router} from '@angular/router'
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">HOME</a></li>
+                    <li class="active"><a routerlink="/home">HOME</a></li>
                     
 
                     
                     
-                    <li><a href="./assets/pages/cartTest.html">my cart</a></li>
+                    <li><a routerlink="/mycart">my cart</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login <span class="caret"></span></a>
                         <ul class="dropdown-menu">

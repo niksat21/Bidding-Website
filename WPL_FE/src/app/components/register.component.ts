@@ -20,7 +20,7 @@ import {Router} from '@angular/router'
 @Component({
 
 
-  selector: 'register',
+  selector: 'app-root',
   template : `
         <!--<nav-bar-Reg></nav-bar-Reg>-->
         <div >

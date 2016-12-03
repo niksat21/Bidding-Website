@@ -16,7 +16,7 @@ import {Router} from '@angular/router'
 @Component({
 
 
-  selector: 'home',
+  selector: 'app-root',
   template : `
  <nav-bar-before></nav-bar-before>
           <carousel></carousel>

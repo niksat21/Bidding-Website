@@ -16,6 +16,7 @@ import {afterLoginComponent} from "./components/afterLogin.component";
 import {afterNavBarComponent} from "./components/navbarAfter.component";
 import {LogoutComponent} from "./components/logout.component";
 import {NavBarRegComponent} from "./components/navbar-reg.component";
+import {routingConfigModule, routingComps} from "./components/router-config";
 
 
 
@@ -23,7 +24,7 @@ import {NavBarRegComponent} from "./components/navbar-reg.component";
   declarations: [
     AppComponent,NavBarBeforeComponent,LoginComponent,carouselComponent,
     fluidComponent,dashboardListComponent,beforeLoginComponent,afterLoginComponent,afterNavBarComponent,
-    LogoutComponent,NavBarRegComponent
+    LogoutComponent,NavBarRegComponent,routingComps
   ],
 
 
@@ -34,7 +35,7 @@ import {NavBarRegComponent} from "./components/navbar-reg.component";
     DataTableModule,
     ReactiveFormsModule,
     DataTableModule,
-
+    routingConfigModule
 
 
   ],
