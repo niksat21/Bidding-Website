@@ -1,16 +1,16 @@
 package edu.utdallas.cs6314.domain.model;
 
 public class AuthenticationInfo {
-    String userName;
+    String username;
     String password;
     String loginLocation;
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String username) {
-        this.userName = username;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
