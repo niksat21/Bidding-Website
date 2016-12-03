@@ -28,7 +28,7 @@ public class UserDAOImpl implements UserDAO {
     public ExistingUser getUser(AuthenticationInfo authenticationInfo) {
         ExistingUser existingUser = new ExistingUser();
 
-        User user = userRepository.findUserByUserName(authenticationInfo.getUsername());
+        User user = userRepository.findUserByUserName(authenticationInfo.getUserName());
         if (user != null && user.getPassword().equals(authenticationInfo.getPassword())) {
 
             user.setLastLogIn(new GregorianCalendar());
