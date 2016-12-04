@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
-@Cacheable("products")
 @RequestMapping({"/api/products"})
 public class ProductController {
     @Autowired
@@ -27,6 +26,7 @@ public class ProductController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Product>> getAllProducts() {
         List<Product> products = productService.getAllProducts();
+        products.forEach(product -> getProduct(product.getProductId()));
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
@@ -44,7 +44,6 @@ public class ProductController {
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
-    //    @CachePut
     @RequestMapping(value = "", method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Product> postNewProduct(@RequestBody @Valid Product product) {

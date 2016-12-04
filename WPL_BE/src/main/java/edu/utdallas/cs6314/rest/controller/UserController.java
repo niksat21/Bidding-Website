@@ -24,6 +24,9 @@ public class UserController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<User>> getUsers() {
         List<User> users = userService.getAllUsers();
+
+        users.forEach(user -> userService.getUser(user.getUserId()));
+
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 

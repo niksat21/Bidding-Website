@@ -4,7 +4,7 @@ import java.util.GregorianCalendar;
 
 import org.springframework.data.annotation.Id;
 
-public class Order {
+public class Order implements java.io.Serializable {
     @Id
     String orderId;
     int quantity;

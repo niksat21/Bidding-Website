@@ -4,7 +4,7 @@ import java.util.GregorianCalendar;
 
 import org.springframework.data.annotation.Id;
 
-public class Bid {
+public class Bid implements java.io.Serializable {
     @Id
     String bidId;
     String productId;

@@ -6,6 +6,7 @@ import edu.utdallas.cs6314.domain.model.AuthenticationInfo;
 import edu.utdallas.cs6314.domain.model.ExistingUser;
 import edu.utdallas.cs6314.domain.model.User;
 
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.EnableCaching;
@@ -13,7 +14,6 @@ import org.springframework.cache.annotation.EnableCaching;
 @EnableCaching
 public interface UserService {
 
-    @Cacheable(value = "users")
     List<User> getAllUsers();
 
     @Cacheable(value = "users", key = "#userId")
@@ -24,6 +24,7 @@ public interface UserService {
 
     ExistingUser loginUser(AuthenticationInfo authenticationInfo);
 
+    @CacheEvict(value = "users", key = "#userId")
     void deleteUser(String userId);
 
     @CachePut(value = "users", key = "#user.userId")

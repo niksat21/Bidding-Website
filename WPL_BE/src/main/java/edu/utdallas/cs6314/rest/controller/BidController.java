@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.*;
  */
 @CrossOrigin
 @RestController
-@Cacheable("bids")
 @RequestMapping({"/api/bids"})
 public class BidController {
     @Autowired
@@ -31,6 +30,7 @@ public class BidController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Bid>> getAllBids() {
         List<Bid> bids = bidService.getAllBids();
+        bids.forEach(bid -> getBid(bid.getBidId()));
         return new ResponseEntity<>(bids, HttpStatus.OK);
     }
 
@@ -61,7 +61,6 @@ public class BidController {
         return new ResponseEntity<>(bids, HttpStatus.OK);
     }
 
-    @CachePut
     @RequestMapping(value = "/{bidId}", method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Bid> acceptBid(@PathVariable String bidId,
