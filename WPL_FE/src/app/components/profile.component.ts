@@ -20,9 +20,9 @@
 import {Component, NgModule, OnInit, enableProdMode, Input} from '@angular/core';
 enableProdMode();
 import {LoginComponent} from './login.component';
-import {Router} from '@angular/router'
+import {Router, Route} from '@angular/router'
 import {NavBarRegComponent} from "./navbar-reg.component";
-import {Http, Response} from "@angular/http";
+import {Http, Response, Headers, RequestOptions} from "@angular/http";
 import {Observable} from "rxjs";
 
 @Component({
@@ -96,7 +96,7 @@ import {Observable} from "rxjs";
 		  <!-- submit -->
         <div class="form-group">
             <div class="col-xs-offset-2 col-xs-10">
-                <span><button type="submit" class="btn btn-primary">SaveChanges</button></span>
+                <span><button type="submit" class="btn btn-primary" (submit)="saveChanges()" >SaveChanges</button></span>
                 <span><button type="submit" class="btn btn-primary">Cancel</button></span>
             </div>
         </div>
@@ -120,7 +120,9 @@ export class profileComponent implements OnInit{
   @Input() private userName;
   @Input() private password;
   @Input() private email;
-  constructor(private http : Http){this.url = "http://localhost:9000/api/users";}
+  private router;
+  private first;
+  constructor(private http : Http,router : Router){this.url = "http://localhost:9000/api/users";}
 
 
 
@@ -150,7 +152,35 @@ export class profileComponent implements OnInit{
     return Observable.throw('Server error');
   }
 
+  saveChanges(){
 
+
+  let firstName = this.firstName;
+  let lastName = this.lastName;
+  let userName = this.userName;
+  let password = this.password;
+  let email = this.email;
+    let body = JSON.stringify({userName,firstName,lastName,email,password});
+    console.log('json stringify body posted: ',body);
+
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    this.http.post('http://localhost:9000/api/users', body,options)
+      .subscribe(
+        response => {
+          localStorage.setItem('id_token', response.json().id_token);
+          this.router.navigateByUrl('/profile');
+
+        },
+        error => {
+          //alert(error.text());
+          console.log(error.text());
+          this.router.navigateByUrl('/dash');
+        }
+      );
+
+  }
 
 
 
