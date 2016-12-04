@@ -49,8 +49,12 @@ public class UserDAOImpl implements UserDAO {
         }
     }
 
+    public User updateUser(User user) {
+        return userRepository.save(user);
+    }
+
     public User saveUser(User user) {
-        User oldUser = userRepository.findUserByUserName(user.getUserName());
+        User oldUser = userRepository.findOne(user.getUserId());
         if (oldUser == null) {
             user.setCreatedDate(new GregorianCalendar());
             return userRepository.save(user);

@@ -17,4 +17,6 @@ public interface UserService {
     ExistingUser loginUser(AuthenticationInfo authenticationInfo);
 
     void deleteUser(String userId);
+
+    User updateUser(User user);
 }

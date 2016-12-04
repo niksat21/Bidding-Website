@@ -35,4 +35,25 @@ public class UserServiceImpl implements UserService {
     public void deleteUser(String userId) {
         userDAO.deleteUser(userId);
     }
+
+    public User updateUser(User user) {
+        if (user.getUserId() == null) {
+            return null;
+        }
+        User existingUser = userDAO.getUser(user.getUserId());
+        if (existingUser == null) {
+            return null;
+        }
+        existingUser.setUserName(
+                user.getUserName() != null ? user.getUserName() : existingUser.getUserName());
+        existingUser.setFirstName(
+                user.getFirstName() != null ? user.getFirstName() : existingUser.getFirstName());
+        existingUser.setLastName(
+                user.getLastName() != null ? user.getLastName() : existingUser.getLastName());
+        existingUser.setPassword(
+                user.getPassword() != null ? user.getPassword() : existingUser.getPassword());
+        existingUser.setEmail(user.getEmail() != null ? user.getEmail() : existingUser.getEmail());
+
+        return userDAO.updateUser(existingUser);
+    }
 }

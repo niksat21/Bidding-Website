@@ -3,6 +3,7 @@ package edu.utdallas.cs6314.rest.controller;
 import java.util.List;
 
 import javax.validation.Valid;
+import javax.xml.ws.Response;
 
 import edu.utdallas.cs6314.domain.model.User;
 import edu.utdallas.cs6314.service.UserService;
@@ -56,5 +57,15 @@ public class UserController {
     public ResponseEntity<User> deleteUser(@PathVariable String userId) {
         userService.deleteUser(userId);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<User> updateUser(@RequestBody @Valid User user) {
+        user = userService.updateUser(user);
+        if (user == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 }

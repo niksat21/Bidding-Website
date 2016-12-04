@@ -13,6 +13,8 @@ public interface UserDAO {
 
     ExistingUser getUser(AuthenticationInfo authenticationInfo);
 
+    User updateUser(User user);
+
     User saveUser(User user);
 
     void deleteUser(String userId);
