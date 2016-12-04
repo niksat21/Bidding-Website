@@ -25,6 +25,7 @@ import { afterNavBarComponent} from "./components/navbarAfter.component";
 import {LogoutComponent} from "./components/logout.component";
 import {NavBarRegComponent} from "./components/navbar-reg.component";
 import {afterlogindashboardComponent} from "./components/afterlogindashboard.component";
+import {ErrorLoginComponent} from "./components/LoginError.component";
 
 
 @Component({
@@ -43,7 +44,7 @@ import {afterlogindashboardComponent} from "./components/afterlogindashboard.com
 
   declarations: [AppComponent,NavBarBeforeComponent,LoginComponent,
     carouselComponent,fluidComponent,dashboardListComponent,beforeLoginComponent,afterLoginComponent,afterNavBarComponent,
-    LogoutComponent,NavBarRegComponent,afterlogindashboardComponent],
+    LogoutComponent,NavBarRegComponent,afterlogindashboardComponent,ErrorLoginComponent],
   bootstrap : [AppComponent],
   imports : [ReactiveFormsModule,BrowserModule,FormGroup,FormControl,FormBuilder,Validators,DataTableModule]
 

@@ -7,6 +7,7 @@ import {Routes,RouterModule} from "@angular/router"
 import {homeComponent} from "./home.component";
 import {registerComponent} from "./register.component";
 import {afterlogindashboardComponent} from "./afterlogindashboard.component";
+import {ErrorLoginComponent} from "./LoginError.component";
 
 
 
@@ -26,7 +27,12 @@ export const routeConfig = [
   {
     path : 'dash',
     component : afterlogindashboardComponent
+  },
+  {
+    path : 'login-error',
+    component : ErrorLoginComponent
   }
+
 
 ];
 
@@ -39,4 +45,4 @@ export const routeConfig = [
 
 export class routingConfigModule{}
 
-export const routingComps = [homeComponent,registerComponent, afterlogindashboardComponent]
+export const routingComps = [homeComponent,registerComponent, afterlogindashboardComponent,ErrorLoginComponent];

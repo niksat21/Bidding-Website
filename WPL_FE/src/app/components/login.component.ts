@@ -57,12 +57,13 @@ export class LoginComponent {
       .subscribe(
         response => {
           localStorage.setItem('id_token', response.json().id_token);
-          this.router.navigateByUrl('/register');
+          this.router.navigateByUrl('/dash');
 
         },
         error => {
-          alert(error.text());
+          //alert(error.text());
           console.log(error.text());
+          this.router.navigateByUrl('/login-error');
         }
       );
   }
