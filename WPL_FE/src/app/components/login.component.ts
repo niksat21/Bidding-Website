@@ -1,7 +1,7 @@
 /**
  * Created by niksat21 on 12/2/2016.
  */
-import {Component, NgModule} from '@angular/core';
+import {Component, NgModule, Input} from '@angular/core';
 import {Validators, FormBuilder} from "@angular/forms";
 import { FormGroup, FormControl } from '@angular/forms';
 import {Http, Headers, RequestOptions} from '@angular/http';
@@ -37,8 +37,16 @@ import {NavBarRegComponent} from "./navbar-reg.component";
 //   imports : [Router]
 // })
 export class LoginComponent {
+  get name() {
+    return this._name;
+  }
 
+  set name(value) {
+    this._name = value;
+  }
 
+   private _name;
+  private resp;
 
   constructor(public http : Http, private router : Router) {
   }
@@ -58,6 +66,11 @@ export class LoginComponent {
         response => {
           localStorage.setItem('id_token', response.json().id_token);
           this.router.navigateByUrl('/dash');
+          console.log('user logged in : ',JSON.stringify(response.json()));
+
+           this._name = JSON.stringify(response.json()).split(",")[2].split(":")[1];
+           console.log( "Pleas print me.........",JSON.stringify(response.json()).split(",")[2].split(":")[1]);
+            this.setJSONResp(JSON.stringify(response.json()));
 
         },
         error => {
@@ -68,5 +81,15 @@ export class LoginComponent {
       );
   }
 
+  public setJSONResp(s2: string) {
+    this.resp = s2;
+  }
+  public getJSONResp(){
+    return this.resp;
+  }
+
+
+
 
 }
+
