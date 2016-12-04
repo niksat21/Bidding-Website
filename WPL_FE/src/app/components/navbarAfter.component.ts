@@ -29,6 +29,7 @@ import {Router} from '@angular/router'
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">HOME</a></li>
                     <li><a href="./assets/pages/cartTest.html">my cart</a></li>
+                    <li><a href="/profile">Profile</a></li>
                     <li><logout></logout></li>
                 </ul>
 

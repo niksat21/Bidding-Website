@@ -29,6 +29,8 @@ import {NavBarRegComponent} from "./navbar-reg.component";
         <nav-bar-after></nav-bar-after>
         
     <h1 class="my_margin_form">Hello</h1>
+    
+   
 
 
 `

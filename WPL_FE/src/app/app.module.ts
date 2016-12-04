@@ -19,6 +19,7 @@ import {NavBarRegComponent} from "./components/navbar-reg.component";
 import {routingConfigModule, routingComps} from "./components/router-config";
 import {afterlogindashboardComponent} from "./components/afterlogindashboard.component";
 import {ErrorLoginComponent} from "./components/LoginError.component";
+import {profileComponent} from "./components/profile.component";
 
 
 
@@ -26,7 +27,8 @@ import {ErrorLoginComponent} from "./components/LoginError.component";
   declarations: [
     AppComponent,NavBarBeforeComponent,LoginComponent,carouselComponent,
     fluidComponent,dashboardListComponent,beforeLoginComponent,afterLoginComponent,afterNavBarComponent,
-    LogoutComponent,NavBarRegComponent,routingComps,NavBarRegComponent,afterlogindashboardComponent,ErrorLoginComponent
+    LogoutComponent,NavBarRegComponent,routingComps,NavBarRegComponent,afterlogindashboardComponent,ErrorLoginComponent,
+    profileComponent
   ],
 
 
