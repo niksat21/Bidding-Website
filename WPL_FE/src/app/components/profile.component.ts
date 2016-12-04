@@ -17,7 +17,7 @@
 /**
  * Created by niksat21 on 12/1/2016.
  */
-import {Component, NgModule, OnInit, enableProdMode, Input} from '@angular/core';
+import {Component, NgModule, OnInit, enableProdMode, Input, Output} from '@angular/core';
 enableProdMode();
 import {LoginComponent} from './login.component';
 import {Router, Route} from '@angular/router'
@@ -37,15 +37,16 @@ import {Observable} from "rxjs";
 				<legend class="titlefeel"></legend>
 
 
-   <form class="form-horizontal formstyle">
+   <form class="form-horizontal formstyle" #form="ngForm" (ngSubmit)="saveChanges(firstName.value,lastName.value
+   ,password.value,email.value)">
 
 		<fieldset name="Contact Details:">
 				<legend>Personal details:</legend>
 
 			<div class="form-group">
-				<label for="ServiceName" class="control-label col-xs-2" >First Name</label>
+				<label for="ServiceName"  class="control-label col-xs-2" >First Name</label>
 				<div class="col-xs-5">
-					<input type="text" class="form-control" id="firstname"  [value]=firstName >
+					<input type="text" class="form-control" id="firstname" #firstName name="first" [ngModel]="first">{{firstName}}
 				</div>
 			</div>
 
@@ -53,7 +54,7 @@ import {Observable} from "rxjs";
 			<div class="form-group">
 				<label for="ServiceName" class="control-label col-xs-2">Last Name</label>
 				<div class="col-xs-5">
-					<input type="text" class="form-control" id="lastname" [value]=lastName>
+					<input type="text" class="form-control" #lastName name = "lastName" id="lastname" [ngModel]="last" >
 				</div>
 			</div>
 		</fieldset>
@@ -68,7 +69,7 @@ import {Observable} from "rxjs";
 			<div class="form-group">
 				<label for="Contactname" class="control-label col-xs-2">Email ID</label>
 				<div class="col-xs-5">
-					<input type="text" class="form-control" id="userid" [value]=email>
+					<input type="text" class="form-control" #email name ="email" id="userid" [ngModel]="em">
 				</div>
 			</div>
 
@@ -83,7 +84,7 @@ import {Observable} from "rxjs";
 		<div class="form-group">
 				<label for="ServiceName" class="control-label col-xs-2">Password</label>
 				<div class="col-xs-5">
-					<input type="password" class="form-control" id="pwd" [value]=password>
+					<input type="password" class="form-control" #password name="password" id="pwd" [ngModel]="pass">
 				</div>
 			</div>
 
@@ -96,7 +97,7 @@ import {Observable} from "rxjs";
 		  <!-- submit -->
         <div class="form-group">
             <div class="col-xs-offset-2 col-xs-10">
-                <span><button type="submit" class="btn btn-primary" (submit)="saveChanges()" >SaveChanges</button></span>
+                <span><button type="submit" class="btn btn-primary"  >SaveChanges</button></span>
                 <span><button type="submit" class="btn btn-primary" (click)="cancel()" >Cancel</button></span>
             </div>
         </div>
@@ -112,16 +113,29 @@ import {Observable} from "rxjs";
 
 })
 export class profileComponent implements OnInit{
-@Input()  private url: String;
+  @Input()  private url: String;
   @Input()  private output;
-  @Input() private firstName;
+  @Input() private first;
   @Input() private split;
-  @Input() private lastName;
-  @Input() private userName;
-  @Input() private password;
-  @Input() private email;
+  @Input() private last;
+  @Input() private user;
+  @Input() private pass;
+  @Input() private em;
+  @Input() private userId;
 
-  private first;
+
+  // private url: String;
+  // private output;
+  // private firstName;
+  // private split;
+  // private lastName;
+  //  private userName;
+  // private password;
+  //  private email;
+  //  private userId;
+
+
+
   constructor(private http : Http,private router : Router){this.url = "http://localhost:9000/api/users";}
 
 
@@ -138,11 +152,12 @@ export class profileComponent implements OnInit{
         console.log(this.output);
         this.split = this.output.split(",");
         console.log('firstname : ',this.split[2].split(":")[1]);
-        this.firstName = this.split[2].split(":")[1].replace(/"/g,'');
-        this.lastName = this.split[3].split(":")[1].replace(/"/g,'');
-        this.userName = this.split[1].split(":")[1].replace(/"/g,'');
-        this.password = this.split[5].split(":")[1].replace(/"/g,'');
-        this.email = this.split[4].split(":")[1].replace(/"/g,'');
+        this.first = this.split[2].split(":")[1].replace(/"/g,'');
+        this.last = this.split[3].split(":")[1].replace(/"/g,'');
+        this.user = this.split[1].split(":")[1].replace(/"/g,'');
+        this.pass = this.split[5].split(":")[1].replace(/"/g,'');
+        this.em = this.split[4].split(":")[1].replace(/"/g,'');
+        this.userId =this.split[0].split(":")[1].replace(/"/g,'');
       })
       .catch(this.handleError);
   }
@@ -152,21 +167,20 @@ export class profileComponent implements OnInit{
     return Observable.throw('Server error');
   }
 
-  saveChanges(){
+  saveChanges(firstName,lastName,password,email){
 
 
-  let firstName = this.firstName;
-  let lastName = this.lastName;
-  let userName = this.userName;
-  let password = this.password;
-  let email = this.email;
-    let body = JSON.stringify({userName,firstName,lastName,email,password});
+    let userId = this.userId;
+    let userName = this.user;
+    let body = JSON.stringify({userId,userName,firstName,lastName,password,email});
     console.log('json stringify body posted: ',body);
 
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    this.http.post('http://localhost:9000/api/users', body,options)
+    console.log('update val : ',body);
+
+    this.http.post('http://localhost:9000/api/users/update/', body,options)
       .subscribe(
         response => {
           localStorage.setItem('id_token', response.json().id_token);
