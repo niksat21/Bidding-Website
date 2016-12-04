@@ -7,7 +7,7 @@ import org.springframework.data.annotation.Id;
 /**
  * Created by niksat21 on 11/21/2016.
  */
-public class Product {
+public class Product implements java.io.Serializable {
     @Id
     private String productId;
     private String sellerId;

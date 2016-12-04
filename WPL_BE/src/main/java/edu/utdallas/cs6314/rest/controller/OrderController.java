@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.*;
  */
 @CrossOrigin
 @RestController
-@Cacheable("orders")
 @RequestMapping({"/api/orders"})
 public class OrderController {
 
@@ -29,6 +28,7 @@ public class OrderController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Order>> getAllOrders() {
         List<Order> orders = orderService.getAllOrders();
+        orders.forEach(order -> getOrder(order.getOrderId()));
         return new ResponseEntity<>(orders, HttpStatus.OK);
     }
 
@@ -68,7 +68,6 @@ public class OrderController {
         return new ResponseEntity<>(order, HttpStatus.OK);
     }
 
-    @CachePut
     @RequestMapping(value = "", method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Order> placeOrder(@RequestBody Order order) {

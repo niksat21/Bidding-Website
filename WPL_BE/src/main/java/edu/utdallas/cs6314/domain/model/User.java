@@ -4,7 +4,7 @@ import java.util.GregorianCalendar;
 
 import org.springframework.data.annotation.Id;
 
-public class User {
+public class User implements java.io.Serializable {
     @Id
     String userId;
     String userName;
