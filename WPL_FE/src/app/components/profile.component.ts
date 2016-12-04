@@ -97,7 +97,7 @@ import {Observable} from "rxjs";
         <div class="form-group">
             <div class="col-xs-offset-2 col-xs-10">
                 <span><button type="submit" class="btn btn-primary" (submit)="saveChanges()" >SaveChanges</button></span>
-                <span><button type="submit" class="btn btn-primary">Cancel</button></span>
+                <span><button type="submit" class="btn btn-primary" (click)="cancel()" >Cancel</button></span>
             </div>
         </div>
 
@@ -120,9 +120,9 @@ export class profileComponent implements OnInit{
   @Input() private userName;
   @Input() private password;
   @Input() private email;
-  private router;
+
   private first;
-  constructor(private http : Http,router : Router){this.url = "http://localhost:9000/api/users";}
+  constructor(private http : Http,private router : Router){this.url = "http://localhost:9000/api/users";}
 
 
 
@@ -176,12 +176,16 @@ export class profileComponent implements OnInit{
         error => {
           //alert(error.text());
           console.log(error.text());
-          this.router.navigateByUrl('/dash');
+          this.router.navigateByUrl('/login-error');
         }
       );
 
   }
 
+  cancel(){
+
+    this.router.navigateByUrl('/dash');
+  }
 
 
 
