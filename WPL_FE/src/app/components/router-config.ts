@@ -6,6 +6,8 @@ import {NgModule} from "@angular/core"
 import {Routes,RouterModule} from "@angular/router"
 import {homeComponent} from "./home.component";
 import {registerComponent} from "./register.component";
+import {afterlogindashboardComponent} from "./afterlogindashboard.component";
+
 
 
 export const routeConfig = [
@@ -19,6 +21,11 @@ export const routeConfig = [
   {
     path : 'register',
     component : registerComponent
+  },
+
+  {
+    path : 'dash',
+    component : afterlogindashboardComponent
   }
 
 ];
@@ -32,4 +39,4 @@ export const routeConfig = [
 
 export class routingConfigModule{}
 
-export const routingComps = [homeComponent,registerComponent]
+export const routingComps = [homeComponent,registerComponent, afterlogindashboardComponent]

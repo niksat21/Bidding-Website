@@ -17,6 +17,7 @@ import {afterNavBarComponent} from "./components/navbarAfter.component";
 import {LogoutComponent} from "./components/logout.component";
 import {NavBarRegComponent} from "./components/navbar-reg.component";
 import {routingConfigModule, routingComps} from "./components/router-config";
+import {afterlogindashboardComponent} from "./components/afterlogindashboard.component";
 
 
 
@@ -24,7 +25,7 @@ import {routingConfigModule, routingComps} from "./components/router-config";
   declarations: [
     AppComponent,NavBarBeforeComponent,LoginComponent,carouselComponent,
     fluidComponent,dashboardListComponent,beforeLoginComponent,afterLoginComponent,afterNavBarComponent,
-    LogoutComponent,NavBarRegComponent,routingComps,NavBarRegComponent
+    LogoutComponent,NavBarRegComponent,routingComps,NavBarRegComponent,afterlogindashboardComponent
   ],
 
 
