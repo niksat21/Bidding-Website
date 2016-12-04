@@ -27,6 +27,8 @@ import {NavBarRegComponent} from "./components/navbar-reg.component";
 import {afterlogindashboardComponent} from "./components/afterlogindashboard.component";
 import {ErrorLoginComponent} from "./components/LoginError.component";
 import {profileComponent} from "./components/profile.component";
+import {prevBidsComponent} from "./components/previousBids.component";
+import {NavBarBidComponent} from "./components/navBarBid.component";
 
 
 @Component({
@@ -45,7 +47,8 @@ import {profileComponent} from "./components/profile.component";
 
   declarations: [AppComponent,NavBarBeforeComponent,LoginComponent,
     carouselComponent,fluidComponent,dashboardListComponent,beforeLoginComponent,afterLoginComponent,afterNavBarComponent,
-    LogoutComponent,NavBarRegComponent,afterlogindashboardComponent,ErrorLoginComponent,profileComponent],
+    LogoutComponent,NavBarRegComponent,afterlogindashboardComponent,ErrorLoginComponent,profileComponent,prevBidsComponent,
+    NavBarBidComponent],
   bootstrap : [AppComponent],
   imports : [ReactiveFormsModule,BrowserModule,FormGroup,FormControl,FormBuilder,Validators,DataTableModule]
 
