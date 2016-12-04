@@ -17,17 +17,10 @@ import {Router} from '@angular/router';
   selector: 'logout',
   template : `
    
-      
-             
-           
             <div id="navbar" class="navbar-collapse collapse nav navbar-nav">
                   <li><a href="#">Log Out</a></li>
              </div>
   
-
-
-
-
 
 `
 
