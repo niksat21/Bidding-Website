@@ -20,6 +20,8 @@ import {routingConfigModule, routingComps} from "./components/router-config";
 import {afterlogindashboardComponent} from "./components/afterlogindashboard.component";
 import {ErrorLoginComponent} from "./components/LoginError.component";
 import {profileComponent} from "./components/profile.component";
+import {prevBidsComponent} from "./components/previousBids.component";
+import {NavBarBidComponent} from "./components/navBarBid.component";
 
 
 
@@ -28,7 +30,7 @@ import {profileComponent} from "./components/profile.component";
     AppComponent,NavBarBeforeComponent,LoginComponent,carouselComponent,
     fluidComponent,dashboardListComponent,beforeLoginComponent,afterLoginComponent,afterNavBarComponent,
     LogoutComponent,NavBarRegComponent,routingComps,NavBarRegComponent,afterlogindashboardComponent,ErrorLoginComponent,
-    profileComponent
+    profileComponent,prevBidsComponent,NavBarBidComponent
   ],
 
 

@@ -9,6 +9,7 @@ import {registerComponent} from "./register.component";
 import {afterlogindashboardComponent} from "./afterlogindashboard.component";
 import {ErrorLoginComponent} from "./LoginError.component";
 import {profileComponent} from "./profile.component";
+import {prevBidsComponent} from "./previousBids.component";
 
 
 
@@ -36,7 +37,12 @@ export const routeConfig = [
   {
     path : 'profile',
     component : profileComponent
+  },
+  {
+    path : 'prevbids',
+    component : prevBidsComponent
   }
+
 
 
 ];
@@ -50,4 +56,4 @@ export const routeConfig = [
 
 export class routingConfigModule{}
 
-export const routingComps = [homeComponent,registerComponent, afterlogindashboardComponent,ErrorLoginComponent,profileComponent];
+export const routingComps = [homeComponent,registerComponent, afterlogindashboardComponent,ErrorLoginComponent,profileComponent,prevBidsComponent];
