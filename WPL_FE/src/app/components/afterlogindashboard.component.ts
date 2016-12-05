@@ -39,6 +39,7 @@ export class afterlogindashboardComponent {
 
 
 
+
   constructor(private _cookieService:CookieService){
 
 
@@ -56,13 +57,18 @@ export class afterlogindashboardComponent {
 
   getDetails(){
 
-    this.firstName=this._cookieService.get("firstName").replace(/"/g,'');
-    this.lastLogin=this._cookieService.get("lastLogin").replace(/"/g,'');
-    console.log(this.lastLogin);
-    let temp = parseInt(this.lastLogin);
-    let date = new Date(temp).toDateString();
-    this.lastLoginDate = date
+    if (this._cookieService != null) {
 
+
+      this.firstName = this._cookieService.get("firstName").replace(/"/g, '');
+      // if(this.firstName.isEmpty)
+      //   this.firstName = this._cookieService.get("userName").replace(/"/g,'');
+      this.lastLogin = this._cookieService.get("lastLogin").replace(/"/g, '');
+      console.log(this.lastLogin);
+      let temp = parseInt(this.lastLogin);
+      let date = new Date(temp).toDateString();
+      this.lastLoginDate = date
+    }
   }
 
 
