@@ -69,19 +69,25 @@ public class OrderServiceImpl implements OrderService {
     }
 
     public Order placeOrder(Order order) {
-        User buyer = userDAO.getUser(order.getBuyerId());
-        User seller = userDAO.getUser(order.getSellerId());
-        sendEmail(userDAO.getUser(order.getBuyerId()).getEmail(), "Purchase Confirmed!",
-                "You have bought " + order.getQuantity() + "x "
-                        + productDAO.getProduct(order.getProductId()).getProductName()
-                        + (order.getOrderDate() == null ? "."
-                                : " on " + order.getOrderDate().toString() + "."));
-        sendEmail(userDAO.getUser(order.getSellerId()).getEmail(), "Your Item Was Purchased!",
-                "You have sold " + order.getQuantity() + "x "
-                        + productDAO.getProduct(order.getProductId()).getProductName()
-                        + (order.getOrderDate() == null ? "."
-                                : " on " + order.getOrderDate().toString() + "."));
+        try {
+            sendEmail(userDAO.getUser(order.getBuyerId()).getEmail(), "Purchase Confirmed!",
+                    "You have bought " + order.getQuantity() + "x "
+                            + productDAO.getProduct(order.getProductId()).getProductName()
+                            + (order.getOrderDate() == null ? "."
+                                    : " on " + order.getOrderDate().toString() + "."));
+        } catch (Exception e) {
+            System.out.println("Buyer email not sent");
+        }
 
+        try {
+            sendEmail(userDAO.getUser(order.getSellerId()).getEmail(), "Your Item Was Purchased!",
+                    "You have sold " + order.getQuantity() + "x "
+                            + productDAO.getProduct(order.getProductId()).getProductName()
+                            + (order.getOrderDate() == null ? "."
+                                    : " on " + order.getOrderDate().toString() + "."));
+        } catch (Exception e) {
+            System.out.println("Sender email not sent");
+        }
         return orderDAO.placeOrder(order);
     }
 
