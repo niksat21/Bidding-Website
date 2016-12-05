@@ -58,7 +58,10 @@ export class LoginComponent {
     let body = JSON.stringify({userName,password });
     console.log('json stringify body posted: ',body);
 
-    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Basic YWRtaW46MTIzNDU='
+    });
     let options = new RequestOptions({ headers: headers });
 
     this.http.post('http://localhost:9000/api/auth/login', body,options)
