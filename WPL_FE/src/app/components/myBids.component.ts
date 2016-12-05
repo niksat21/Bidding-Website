@@ -32,6 +32,9 @@ import {CookieService} from "angular2-cookie/services/cookies.service";
 export class myBidsComponent implements OnInit{
   private userID;
   private output;
+  private productID;
+  private outputProd;
+  private sellerID;
   constructor(private http:Http,private _cookieService:CookieService,private router:Router){}
 
   ngOnInit(): void {
@@ -48,10 +51,28 @@ export class myBidsComponent implements OnInit{
         console.log(response.json());
 
         this.output =  JSON.stringify(response.json());
+        console.log('output.....',this.output);
+        // [{"bidId":"5844f07977a2bc27b0887362","productId":"5844efe377a2bc27b0887361","userId":"58422a804a3b14187c96ead0","bidDate":null}]
 
-
+        this.productID = this.output.split(",")[1].split(":")[1].replace(/"/g,"");
       })
       .catch(this.handleError);
+
+
+    this.http.get('https://localhost:9000/api/products/' + this.productID,options)
+      .toPromise()
+      .then((response) => {
+        console.log(response.json());
+
+        this.outputProd =  JSON.stringify(response.json());
+        console.log('output.....',this.outputProd);
+        // [{"bidId":"5844f07977a2bc27b0887362","productId":"5844efe377a2bc27b0887361","userId":"58422a804a3b14187c96ead0","bidDate":null}]
+
+        this.sellerID = this.outputProd.split(",")[1].split(":")[1].replace(/"/g,"");
+      })
+      .catch(this.handleError);
+
+
   }
   private handleError(error: Response) {
     console.log(error);
