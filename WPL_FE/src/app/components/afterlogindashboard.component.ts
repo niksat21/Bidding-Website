@@ -46,6 +46,3 @@ export class afterlogindashboardComponent {
 
 
 }
-/**
- * Created by mayur on 12/3/2016.
- */

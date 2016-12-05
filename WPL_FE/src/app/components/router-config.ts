@@ -10,6 +10,7 @@ import {afterlogindashboardComponent} from "./afterlogindashboard.component";
 import {ErrorLoginComponent} from "./LoginError.component";
 import {profileComponent} from "./profile.component";
 import {prevBidsComponent} from "./previousBids.component";
+import {ErrorComponent} from "./error.component";
 
 
 
@@ -41,6 +42,10 @@ export const routeConfig = [
   {
     path : 'prevbids',
     component : prevBidsComponent
+  },
+  {
+    path : 'error',
+    component : ErrorComponent
   }
 
 
@@ -56,4 +61,5 @@ export const routeConfig = [
 
 export class routingConfigModule{}
 
-export const routingComps = [homeComponent,registerComponent, afterlogindashboardComponent,ErrorLoginComponent,profileComponent,prevBidsComponent];
+export const routingComps = [homeComponent,registerComponent, afterlogindashboardComponent,ErrorLoginComponent,
+  profileComponent,prevBidsComponent,ErrorComponent];
