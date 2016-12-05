@@ -7,16 +7,14 @@ import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
 @Component({
   selector: 'app-cart',
   templateUrl: `
-<h1>Cart</h1>
+<nav-bar-after></nav-bar-after>
+<br/><br/><h1>Cart</h1>
 <table>
 <tr>
 <th>Product Name</th>
 <th>Price</th>
 <th>Remove</th>
 </tr>
-<tr>
-</tr>
-<tr><td>Some Product</td><td>1</td><td><input type="submit" value="X"></td></tr>
 <tbody [innerHTML]="safeHTML"></tbody>
 </table>
 <form (submit)="buyCart($event)">Buy Now
@@ -81,8 +79,9 @@ export class CartComponent implements OnInit {
             });
           });
       }
+
+      this._cookieService.remove("cart");
     });
-    //this._cookieService.remove("cart");
   }
 
   public removeFromCart(event) {

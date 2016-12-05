@@ -118,9 +118,9 @@ export class ProductComponent implements OnInit {
     if (this._cookieService.get("cart") != null) {
       productsToBuy = this._cookieService.get("cart") + ",";
     }
-    // if (!productsToBuy.includes(this.productId.toString())) {
-    //   productsToBuy += this.productId;
-    // }
+    if (!productsToBuy.includes(this.productId.toString())) {
+      productsToBuy += this.productId;
+    }
 
     this._cookieService.put("cart", productsToBuy);
 
