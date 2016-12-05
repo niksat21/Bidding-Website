@@ -19,6 +19,7 @@ import {LoginComponent} from './login.component';
 import {Router} from '@angular/router'
 import {NavBarRegComponent} from "./navbar-reg.component";
 import {Headers, RequestOptions, Http} from "@angular/http";
+import {CookieService} from "angular2-cookie/services/cookies.service";
 
 
 
@@ -122,7 +123,7 @@ import {Headers, RequestOptions, Http} from "@angular/http";
 
 })
 export class registerComponent {
-constructor(private http:Http , private router:Router){}
+constructor(private http:Http , private router:Router,private _cookieService:CookieService){}
 
 createUser(firstName,lastName,userName,email,password) {
   console.log(firstName,lastName,userName,email,password);
@@ -130,7 +131,10 @@ createUser(firstName,lastName,userName,email,password) {
   let body = JSON.stringify({userName,firstName,lastName,password,email});
   console.log('json stringify body posted: ',body);
 
-  let headers = new Headers({ 'Content-Type': 'application/json' });
+  let headers = new Headers({
+    'Content-Type': 'application/json',
+    'Authorization': 'Basic YWRtaW46MTIzNDU='
+  });
   let options = new RequestOptions({ headers: headers });
 
   this.http.post('https://localhost:9000/api/users/', body,options)
@@ -139,6 +143,7 @@ createUser(firstName,lastName,userName,email,password) {
         localStorage.setItem('id_token', response.json().id_token);
         this.router.navigateByUrl('/dash');
         console.log('user created   : ',JSON.stringify(response.json()));
+        this.router.navigateByUrl('/');
 
       },
       error => {
