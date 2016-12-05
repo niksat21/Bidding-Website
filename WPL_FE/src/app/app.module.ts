@@ -27,6 +27,7 @@ import {ErrorComponent} from "./components/error.component";
 import {postProductComponent} from "./components/postProducts.component";
 import { ProductComponent } from './components/product.component';
 import {SearchComponent} from "./components/search.component";
+import { NotFoundComponent } from './components/not-found.component';
 
 
 
@@ -36,7 +37,7 @@ import {SearchComponent} from "./components/search.component";
     AppComponent,NavBarBeforeComponent,LoginComponent,carouselComponent,
     fluidComponent,dashboardListComponent,beforeLoginComponent,afterLoginComponent,afterNavBarComponent,
     LogoutComponent,NavBarRegComponent,routingComps,NavBarRegComponent,afterlogindashboardComponent,ErrorLoginComponent,
-    profileComponent,prevBidsComponent,NavBarBidComponent,ErrorComponent,postProductComponent, ProductComponent, SearchComponent
+    profileComponent,prevBidsComponent,NavBarBidComponent,ErrorComponent,postProductComponent, ProductComponent, SearchComponent, NotFoundComponent
   ],
   providers: [ CookieService ],
 
