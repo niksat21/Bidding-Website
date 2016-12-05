@@ -56,7 +56,7 @@ export class LoginComponent {
     });
     let options = new RequestOptions({ headers: headers });
 
-    this.http.post('http://localhost:9000/api/auth/login', body,options)
+    this.http.post('https://localhost:9000/api/auth/login', body,options)
       .subscribe(
         response => {
           localStorage.setItem('id_token', response.json().id_token);

@@ -133,7 +133,7 @@ createUser(firstName,lastName,userName,email,password) {
   let headers = new Headers({ 'Content-Type': 'application/json' });
   let options = new RequestOptions({ headers: headers });
 
-  this.http.post('http://localhost:9000/api/users/', body,options)
+  this.http.post('https://localhost:9000/api/users/', body,options)
     .subscribe(
       response => {
         localStorage.setItem('id_token', response.json().id_token);
