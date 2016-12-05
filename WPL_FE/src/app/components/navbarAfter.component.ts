@@ -23,12 +23,12 @@ import {Router} from '@angular/router'
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">forever Shopping</a>
+                <a class="navbar-brand" href="/dash">forever Shopping</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">HOME</a></li>
-                    <li><a href="./assets/pages/cartTest.html">my cart</a></li>
+                    <li class="active"><a href="/dash">HOME</a></li>
+                    <li><a href="/cart">my cart</a></li>
                     <li><a href="/profile">Profile</a></li>
                     <li><logout></logout></li>
                 </ul>
