@@ -6,7 +6,27 @@ import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-root',
-  template: `      
+  template: `
+<nav-bar-after></nav-bar-after>
+<br/><br/><br/>
+<script src="../../assets/scripts/sorttable.js"></script>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
 <table width="50%">
   <tbody>
     <tr>
@@ -32,6 +52,15 @@ import {Observable} from "rxjs";
      </tr>
   </tbody>
 </table>
+<table class="sortable"  border="1">
+    <tr>
+      <th>Product Id</th>
+      <th>Bid Id</th>
+      <th>Seller Id</th>
+      <th>Bid Amount</th>
+    </tr>
+<tbody [innerHTML]="tableHTML"></tbody>
+</table>
 `
 })
 export class ProductComponent implements OnInit {
@@ -42,12 +71,14 @@ export class ProductComponent implements OnInit {
   @Input() private productCategory: String;
   @Input() private price: Number;
   @Input() private specifications: String;
+  @Input() private tableHTML: String;
 
   constructor(private http: Http,
               private router: Router,
               private _cookieService:CookieService
   ) {
     this.url = "https://localhost:9000/api/products"
+    this.tableHTML = "";
   }
 
   public placeBid(event, bidAmount) {
@@ -91,6 +122,23 @@ export class ProductComponent implements OnInit {
         this.productCategory = json.productCategory;
         this.price = json.price;
         this.specifications = json.specifications;
+        this.http.get('https://localhost:9000/api/bids/product/' + this.productId, options)
+          .toPromise()
+          .then((bidResponse) => {
+            this.tableHTML = "";
+            bidResponse.json().forEach(bid => {
+              if (this.tableHTML.length > 0) {
+                this.tableHTML += ""
+              }
+              this.tableHTML += "" +
+                  "<tr><td>"+bid.productId+"</td>"+
+                  "<td>"+bid.bidId+"</td>"+
+                  "<td>"+bid.sellerId+"</td>"+
+                  "<td>"+bid.bidAmount+"</td>"+
+                  "</tr>";
+            });
+          });
+
       }).catch(this.handleError);
   }
 
