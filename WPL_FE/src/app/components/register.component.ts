@@ -107,7 +107,8 @@ import {CookieService} from "angular2-cookie/services/cookies.service";
 		  <!-- submit -->
         <div class="form-group">
             <div class="col-xs-offset-2 col-xs-10">
-                <button type="submit" class="btn btn-primary" (click)="createUser(userName.value,firstName.value,lastName.value,
+                <button type="submit" class="btn btn-primary" (click)="createUser(firstName.value,lastName.value,
+                userName.value,
                 email.value,password.value)">Submit</button>
             </div>
         </div>
