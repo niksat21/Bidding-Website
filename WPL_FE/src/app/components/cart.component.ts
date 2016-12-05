@@ -19,6 +19,9 @@ import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
 <tr><td>Some Product</td><td>1</td><td><input type="submit" value="X"></td></tr>
 <tbody [innerHTML]="safeHTML"></tbody>
 </table>
+<form (submit)="buyCart($event)">Buy Now
+  <input type="submit" class="btn btn-success" value="Purchase Items">
+</form>
 `
 })
 export class CartComponent implements OnInit {
@@ -37,6 +40,50 @@ export class CartComponent implements OnInit {
   //   event.preventDefault();
   //   console.log("removed " + id);
   // }
+
+  public buyCart(event) {
+    event.preventDefault();
+    console.log("buyCart");
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Basic YWRtaW46MTIzNDU='
+    });
+    let options = new RequestOptions({ headers: headers });
+    if (this._cookieService.get("cart") == null) {
+      return;
+    }
+    this.tableHTML = "";
+    this.safeHTML = this._sanitizer.bypassSecurityTrustHtml(this.tableHTML.toString());
+    let products = this._cookieService.get("cart").split(",");
+    console.log(this._cookieService.get("cart"));
+    console.log(products);
+    products.forEach((product) => {
+      if (product.length > 0) {
+
+        this.http.get('https://localhost:9000/api/products/' + product, options)
+          .toPromise()
+          .then((productResponse) => {
+            let quantity = 1;
+            console.log("where things go to hell?");
+            console.log(productResponse.json());
+            console.log(this._cookieService.get("userID"));
+            let buyerId = this._cookieService.get("userID")[0];
+            let sellerId = productResponse.json().sellerId;
+            console.log("sellerId: " + sellerId);
+            let productId = product;
+            let body = JSON.stringify( {
+              quantity, buyerId, sellerId, productId
+            });
+            this.http.post('https://localhost:9000/api/orders', body, options)
+              .toPromise()
+              .then((orderResponse) => {
+                console.log("order submitted");
+            });
+          });
+      }
+    });
+    //this._cookieService.remove("cart");
+  }
 
   public removeFromCart(event) {
     event.preventDefault();
