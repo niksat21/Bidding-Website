@@ -33,6 +33,7 @@ import {ErrorComponent} from "./components/error.component";
 import {postProductComponent} from "./components/postProducts.component";
 
 
+
 @Component({
 
   selector: 'app-root',

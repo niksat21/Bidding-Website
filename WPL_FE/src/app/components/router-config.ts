@@ -16,6 +16,7 @@ import {myBidsComponent} from "./myBids.component";
 
 
 
+
 export const routeConfig = [
   {
     path : '' , pathMatch : 'full' , redirectTo : 'home'
@@ -57,7 +58,6 @@ export const routeConfig = [
     path: 'mybids',
     component : myBidsComponent
   }
-
 
 
 ];

@@ -28,6 +28,7 @@ import {postProductComponent} from "./components/postProducts.component";
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,NavBarBeforeComponent,LoginComponent,carouselComponent,
