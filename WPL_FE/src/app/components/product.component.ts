@@ -23,8 +23,9 @@ import {Observable} from "rxjs";
               <tr><td> Initial Bid USD:  {{price}}</td></tr>
               <tr><td> Descriptions:  {{productName}}</td></tr>
             </tbody>
-            <form>Place bid USD: <input type="number" ><br /></form>
-            <input type="submit" class="btn btn-success" value="Place_Bid">
+            <form (submit)="placeBid($event, amount.value)">Place bid USD: <input #amount id="amount" type="number" ><br />
+              <input type="submit" class="btn btn-success" value="Place_Bid">
+            </form>
           </table>
         </div>
        </td>
@@ -47,6 +48,30 @@ export class ProductComponent implements OnInit {
               private _cookieService:CookieService
   ) {
     this.url = "https://localhost:9000/api/products"
+  }
+
+  public placeBid(event, bidAmount) {
+    event.preventDefault();
+    console.log(bidAmount);
+    let productId = "5838ba59ac06afd79db43c9f";
+    let userId = "5844dc59157b7c5a65990eb4";
+    let sellerId = "5844dc59157b7c5a65990eb4";
+    let bidDate = console.time();
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Basic YWRtaW46MTIzNDU=',
+      "Access-Control-Allow-Origin": "*"
+    });
+    let options = new RequestOptions({ headers: headers });
+    let bidUrl = "https://localhost:9000/api/bids";
+    let body = JSON.stringify( {
+      bidAmount, userId, productId, sellerId, bidDate
+    });
+    this.http.post(bidUrl, body, options)
+      .toPromise()
+      .then((response) => {
+        // route?
+      }).catch(this.handleError);
   }
 
   ngOnInit() {
