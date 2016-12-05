@@ -8,6 +8,7 @@ import {Http, Headers, RequestOptions} from '@angular/http';
 import {Router} from '@angular/router';
 import {NavBarRegComponent} from "./navbar-reg.component";
 
+import {CookieService} from 'angular2-cookie/core';
 
 
 
@@ -37,18 +38,9 @@ import {NavBarRegComponent} from "./navbar-reg.component";
 //   imports : [Router]
 // })
 export class LoginComponent {
-  get name() {
-    return this._name;
-  }
 
-  set name(value) {
-    this._name = value;
-  }
 
-   private _name;
-  private resp;
-
-  constructor(public http : Http, private router : Router) {
+  constructor(public http : Http, private router : Router,private _cookieService:CookieService) {
   }
 
   login(event, userName, password) {
@@ -70,10 +62,21 @@ export class LoginComponent {
           localStorage.setItem('id_token', response.json().id_token);
           this.router.navigateByUrl('/dash');
           console.log('user logged in : ',JSON.stringify(response.json()));
+          let output = JSON.stringify(response.json());
 
-           this._name = JSON.stringify(response.json()).split(",")[2].split(":")[1];
+           let userID = JSON.stringify(response.json()).split(",")[0].split(":")[1];
+          let userName = JSON.stringify(response.json()).split(",")[1].split(":")[1];
+          let firstName = JSON.stringify(response.json()).split(",")[2].split(":")[1];
+          let lastName = JSON.stringify(response.json()).split(",")[3].split(":")[1];
+          let email = JSON.stringify(response.json()).split(",")[4].split(":")[1];
+          let lastLogin = JSON.stringify(response.json()).split(",")[6].split(":")[1];
            console.log( "Pleas print me.........",JSON.stringify(response.json()).split(",")[2].split(":")[1]);
-            this.setJSONResp(JSON.stringify(response.json()));
+          this.setcookie("userID",userID);
+          this.setcookie("userName",userName);
+          this.setcookie("firstName",firstName);
+          this.setcookie("lastName",lastName);
+          this.setcookie("email",email);
+          this.setcookie("lastLogin",lastLogin);
 
         },
         error => {
@@ -84,14 +87,18 @@ export class LoginComponent {
       );
   }
 
-  public setJSONResp(s2: string) {
-    this.resp = s2;
-  }
-  public getJSONResp(){
-    return this.resp;
-  }
 
 
+
+  getcookie(key : string){
+
+    this._cookieService.get(key);
+
+  }
+
+  setcookie(key :string,value:string){
+    this._cookieService.put(key,value);
+  }
 
 
 }

@@ -22,6 +22,8 @@ import {ErrorLoginComponent} from "./components/LoginError.component";
 import {profileComponent} from "./components/profile.component";
 import {prevBidsComponent} from "./components/previousBids.component";
 import {NavBarBidComponent} from "./components/navBarBid.component";
+import {CookieService} from "angular2-cookie/services/cookies.service";
+import {ErrorComponent} from "./components/error.component";
 
 
 
@@ -30,9 +32,9 @@ import {NavBarBidComponent} from "./components/navBarBid.component";
     AppComponent,NavBarBeforeComponent,LoginComponent,carouselComponent,
     fluidComponent,dashboardListComponent,beforeLoginComponent,afterLoginComponent,afterNavBarComponent,
     LogoutComponent,NavBarRegComponent,routingComps,NavBarRegComponent,afterlogindashboardComponent,ErrorLoginComponent,
-    profileComponent,prevBidsComponent,NavBarBidComponent
+    profileComponent,prevBidsComponent,NavBarBidComponent,ErrorComponent
   ],
-
+  providers: [ CookieService ],
 
   imports: [
     BrowserModule,
@@ -45,7 +47,7 @@ import {NavBarBidComponent} from "./components/navBarBid.component";
 
 
   ],
-  providers: [],
+
   bootstrap: [AppComponent]
 })
 export class AppModule {
