@@ -24,6 +24,7 @@ import {Router, Route} from '@angular/router'
 import {NavBarRegComponent} from "./navbar-reg.component";
 import {Http, Response, Headers, RequestOptions} from "@angular/http";
 import {Observable} from "rxjs";
+import {CookieService} from "angular2-cookie/services/cookies.service";
 
 @Component({
 
@@ -46,7 +47,7 @@ import {Observable} from "rxjs";
 			<div class="form-group">
 				<label for="ServiceName"  class="control-label col-xs-2" >First Name</label>
 				<div class="col-xs-5">
-					<input type="text" class="form-control" id="firstname" #firstName name="first" [ngModel]="first">{{firstName}}
+					<input type="text" class="form-control" id="firstname" #firstName name="first" [ngModel]="first">
 				</div>
 			</div>
 
@@ -134,24 +135,33 @@ export class profileComponent implements OnInit{
   //  private email;
   //  private userId;
 
+private userID;
 
-
-  constructor(private http : Http,private router : Router){this.url = "https://localhost:9000/api/users";}
+  constructor(private http : Http,private router : Router,private _cookieService:CookieService)
+  {this.url = "https://localhost:9000/api/users";}
 
 
 
   ngOnInit(): void {
-
-    this.http.get(this.url + "/58422a804a3b14187c96ead0")
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Basic YWRtaW46MTIzNDU=',
+      // "Access-Control-Allow-Origin" : "*"
+    });
+    let options = new RequestOptions({ headers: headers });
+    this.userID=this._cookieService.get("userID");
+    let id = this.userID;
+    console.log("id.......",id);
+    console.log("url.........",this.url + "/"+ id);
+    this.http.get(this.url + "/"+ id ,options)
       .toPromise()
       .then((response) => {
-        console.log(response.json());
+
 
         this.output =  JSON.stringify(response.json());
-
+        // console.log(response.json().firstName);
         console.log(this.output);
         this.split = this.output.split(",");
-        console.log('firstname : ',this.split[2].split(":")[1]);
         this.first = this.split[2].split(":")[1].replace(/"/g,'');
         this.last = this.split[3].split(":")[1].replace(/"/g,'');
         this.user = this.split[1].split(":")[1].replace(/"/g,'');
@@ -175,7 +185,10 @@ export class profileComponent implements OnInit{
     let body = JSON.stringify({userId,userName,firstName,lastName,password,email});
     console.log('json stringify body posted: ',body);
 
-    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Basic YWRtaW46MTIzNDU='
+    });
     let options = new RequestOptions({ headers: headers });
 
     console.log('update val : ',body);
@@ -190,7 +203,7 @@ export class profileComponent implements OnInit{
         error => {
           //alert(error.text());
           console.log(error.text());
-          this.router.navigateByUrl('/login-error');
+          this.router.navigateByUrl('/error');
         }
       );
 
