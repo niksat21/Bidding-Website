@@ -101,7 +101,7 @@ export class ProductComponent implements OnInit {
     this.http.post(bidUrl, body, options)
       .toPromise()
       .then((response) => {
-        // route?
+        this.updateTable(options);
       }).catch(this.handleError);
   }
 
@@ -122,24 +122,28 @@ export class ProductComponent implements OnInit {
         this.productCategory = json.productCategory;
         this.price = json.price;
         this.specifications = json.specifications;
-        this.http.get('https://localhost:9000/api/bids/product/' + this.productId, options)
-          .toPromise()
-          .then((bidResponse) => {
-            this.tableHTML = "";
-            bidResponse.json().forEach(bid => {
-              if (this.tableHTML.length > 0) {
-                this.tableHTML += ""
-              }
-              this.tableHTML += "" +
-                  "<tr><td>"+bid.productId+"</td>"+
-                  "<td>"+bid.bidId+"</td>"+
-                  "<td>"+bid.sellerId+"</td>"+
-                  "<td>"+bid.bidAmount+"</td>"+
-                  "</tr>";
-            });
-          });
 
+        this.updateTable(options);
       }).catch(this.handleError);
+  }
+
+  updateTable(options: RequestOptions) {
+    this.http.get('https://localhost:9000/api/bids/product/' + this.productId, options)
+      .toPromise()
+      .then((bidResponse) => {
+        this.tableHTML = "";
+        bidResponse.json().forEach(bid => {
+          if (this.tableHTML.length > 0) {
+            this.tableHTML += ""
+          }
+          this.tableHTML += "" +
+            "<tr><td>"+bid.productId+"</td>"+
+            "<td>"+bid.bidId+"</td>"+
+            "<td>"+bid.sellerId+"</td>"+
+            "<td>"+bid.bidAmount+"</td>"+
+            "</tr>";
+        });
+      });
   }
 
   private handleError(error: Response) {
