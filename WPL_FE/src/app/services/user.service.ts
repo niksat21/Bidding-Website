@@ -16,7 +16,7 @@ export class UserService {
 
   constructor(@Inject(Http) _http: Http) {
 
-    this.url = "http://localhost:9000/api/users";
+    this.url = "https://localhost:9000/api/users";
     this.http = _http;
 
     this.headers = new Headers();

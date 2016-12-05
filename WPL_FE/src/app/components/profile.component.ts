@@ -136,7 +136,7 @@ export class profileComponent implements OnInit{
 
 
 
-  constructor(private http : Http,private router : Router){this.url = "http://localhost:9000/api/users";}
+  constructor(private http : Http,private router : Router){this.url = "https://localhost:9000/api/users";}
 
 
 
@@ -180,7 +180,7 @@ export class profileComponent implements OnInit{
 
     console.log('update val : ',body);
 
-    this.http.post('http://localhost:9000/api/users/update/', body,options)
+    this.http.post('https://localhost:9000/api/users/update/', body,options)
       .subscribe(
         response => {
           localStorage.setItem('id_token', response.json().id_token);

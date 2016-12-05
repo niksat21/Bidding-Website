@@ -50,7 +50,7 @@ export class LogoutComponent {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    this.http.post('http://localhost:9000/api/auth/logout',options)
+    this.http.post('https://localhost:9000/api/auth/logout',options)
       .subscribe(
         response => {
           localStorage.setItem('id_token', response.json().id_token);

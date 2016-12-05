@@ -16,7 +16,7 @@ export class LoginService {
 
   constructor(@Inject(Http) _http: Http) {
 
-    this.url = "http://localhost:9000/api/auth/login";
+    this.url = "https://localhost:9000/api/auth/login";
     this.http = _http;
 
     this.headers = new Headers();
