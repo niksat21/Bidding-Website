@@ -66,7 +66,7 @@ import {CookieService} from "angular2-cookie/services/cookies.service";
 			<div class="form-group">
 				<label for="Contactname" class="control-label col-xs-2">Email ID</label>
 				<div class="col-xs-5">
-					<input type="text" class="form-control" #email id="userid" placeholder="email ID">
+					<input type="text" class="form-control" #email  placeholder="email ID">
 				</div>
 			</div>
 
@@ -79,7 +79,7 @@ import {CookieService} from "angular2-cookie/services/cookies.service";
 			<div class="form-group">
 				<label for="Contactname" class="control-label col-xs-2">UserName</label>
 				<div class="col-xs-5">
-					<input type="text" class="form-control" #userName id="userid" placeholder="userName">
+					<input type="text" class="form-control" #userName  placeholder="userName">
 				</div>
 			</div>
 
@@ -107,8 +107,8 @@ import {CookieService} from "angular2-cookie/services/cookies.service";
 		  <!-- submit -->
         <div class="form-group">
             <div class="col-xs-offset-2 col-xs-10">
-                <button type="submit" class="btn btn-primary" (click)="createUser(firstName.value,lastName.value,
-                email.value,password.value,userName.value)">Submit</button>
+                <button type="submit" class="btn btn-primary" (click)="createUser(userName.value,firstName.value,lastName.value,
+                email.value,password.value)">Submit</button>
             </div>
         </div>
 
