@@ -64,12 +64,12 @@ export class LoginComponent {
           console.log('user logged in : ',JSON.stringify(response.json()));
           let output = JSON.stringify(response.json());
 
-           let userID = JSON.stringify(response.json()).split(",")[0].split(":")[1];
-          let userName = JSON.stringify(response.json()).split(",")[1].split(":")[1];
-          let firstName = JSON.stringify(response.json()).split(",")[2].split(":")[1];
-          let lastName = JSON.stringify(response.json()).split(",")[3].split(":")[1];
-          let email = JSON.stringify(response.json()).split(",")[4].split(":")[1];
-          let lastLogin = JSON.stringify(response.json()).split(",")[6].split(":")[1];
+           let userID = JSON.stringify(response.json()).split(",")[0].split(":")[1].replace(/"/g,'');
+          let userName = JSON.stringify(response.json()).split(",")[1].split(":")[1].replace(/"/g,'');
+          let firstName = JSON.stringify(response.json()).split(",")[2].split(":")[1].replace(/"/g,'');
+          let lastName = JSON.stringify(response.json()).split(",")[3].split(":")[1].replace(/"/g,'');
+          let email = JSON.stringify(response.json()).split(",")[4].split(":")[1].replace(/"/g,'');
+          let lastLogin = JSON.stringify(response.json()).split(",")[6].split(":")[1].replace(/"/g,'');
            console.log( "Pleas print me.........",JSON.stringify(response.json()).split(",")[2].split(":")[1]);
           this.setcookie("userID",userID);
           this.setcookie("userName",userName);

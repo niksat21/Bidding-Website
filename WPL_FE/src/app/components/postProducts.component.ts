@@ -68,7 +68,7 @@ import {Router} from '@angular/router';
   <label class="post_formpad" for="initial_bid">initial bid(USD) *</label>
  </td>
  <td valign="top">
-  <input  type="number" name="initial_bid" #initialBid maxlength="50" size="20" required>
+  <input  type="number" min="1" name="initial_bid" #initialBid maxlength="50" size="20" required>
  </td>
 </tr>
                 
@@ -134,10 +134,10 @@ export class postProductComponent {
       .subscribe(
         response => {
           localStorage.setItem('id_token', response.json().id_token);
-          this.router.navigateByUrl('/dash');
-          console.log('user logged in : ',JSON.stringify(response.json()));
-          let output = JSON.stringify(response.json());
 
+          console.log('product posted in : ',JSON.stringify(response.json()));
+          let output = JSON.stringify(response.json());
+          this.router.navigateByUrl('/dash');
 
         },
         error => {
