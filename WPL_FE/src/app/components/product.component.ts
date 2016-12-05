@@ -43,12 +43,11 @@ tr:nth-child(even) {
               <tr><td> Initial Bid USD:  {{price}}</td></tr>
               <tr><td> Descriptions:  {{productName}}</td></tr>
             </tbody>
-            <form (submit)="placeBid($event, amount.value)">Place Bid USD: <input #amount id="amount" type="number"><br />
-              <input type="submit" class="btn btn-success" value="Place_Bid">
+            <form >Place Bid USD: <input #amount id="amount" type="number"><br /><br/><br/>
+              <button (click)="placeBid($event, amount.value)" type="submit" class="btn btn-success" value="Place_Bid">Place Bid</button>
+              <button (click)="addToCart($event)" class="btn btn-success">AddToCart</button>
             </form>
-            <form (submit)="addToCart($event)">Buy Now
-              <input type="submit" class="btn btn-success" value="Place in Cart">
-            </form>
+            
           </table>
         </div>
        </td>
@@ -85,11 +84,16 @@ export class ProductComponent implements OnInit {
   }
 
   public placeBid(event, bidAmount) {
+
     event.preventDefault();
     console.log(bidAmount);
-    let productId = "5838ba59ac06afd79db43c9f";
-    let userId = "5844dc59157b7c5a65990eb4";
-    let sellerId = "5844dc59157b7c5a65990eb4";
+    //let productId = "5838ba59ac06afd79db43c9f";
+    let productId = this._cookieService.get("ProductID");
+
+    //let userId = "5844dc59157b7c5a65990eb4";
+    let userId = this._cookieService.get("userID");
+    //let sellerId = "5844dc59157b7c5a65990eb4";
+    let sellerId = this._cookieService.get("sellerID");
     let bidDate = console.time();
     let headers = new Headers({
       'Content-Type': 'application/json',
@@ -114,15 +118,18 @@ export class ProductComponent implements OnInit {
     if (this._cookieService.get("cart") != null) {
       productsToBuy = this._cookieService.get("cart") + ",";
     }
-    if (!productsToBuy.includes(this.productId.toString())) {
-      productsToBuy += this.productId;
-    }
+    // if (!productsToBuy.includes(this.productId.toString())) {
+    //   productsToBuy += this.productId;
+    // }
 
     this._cookieService.put("cart", productsToBuy);
+
+    this.router.navigateByUrl('/cart');
   }
 
   ngOnInit() {
-    let productID = "5838ba59ac06afd79db43c9f";
+    //let productID = "5838ba59ac06afd79db43c9f";
+    let productID = this._cookieService.get("ProductID");
     let headers = new Headers({
       'Content-Type': 'application/json',
       'Authorization': 'Basic YWRtaW46MTIzNDU='

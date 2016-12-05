@@ -81,7 +81,8 @@ export const routeConfig = [
   {
     path: '**',
     component: NotFoundComponent
-  }
+  },
+
 ];
 
 @NgModule({

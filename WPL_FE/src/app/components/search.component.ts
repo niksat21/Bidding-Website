@@ -27,7 +27,7 @@ export class SearchComponent implements OnInit {
   @Input() private tableHTML: String;
   private prodId;
 
-  constructor(private http:Http,private router:Router){
+  constructor(private http:Http,private router:Router,private _cookieService:CookieService){
     this.tableHTML = `    <tr>
       <td></td>
       <td></td>
@@ -60,6 +60,9 @@ export class SearchComponent implements OnInit {
             "<td>"+product.price+"</td>"+
             "<td>"+"<span>"+"<button [id]=prodId (click)='goToProduct()'/>"+"BuyBid"+"</span>"+"</td>"+
     "</tr></div>";
+
+          this._cookieService.put("ProductID",product.productId);
+          this._cookieService.put("sellerID",product.sellerId);
 
         //  <div style="padding-left:110px">
          // <input type="submit" value="Submit" class="btn btn-primary"/>
