@@ -1,6 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {Http, Headers, RequestOptions, Response} from "@angular/http";
-import {Router} from "@angular/router";
+import {Router, ActivatedRoute} from "@angular/router";
 import {CookieService} from "angular2-cookie/services/cookies.service";
 import {Observable} from "rxjs";
 
@@ -43,17 +43,27 @@ export class ProductComponent implements OnInit {
   @Input() private price: Number;
   @Input() private specifications: String;
 
+  private sub: any;
+
   constructor(private http: Http,
               private router: Router,
-              private _cookieService:CookieService
+              private _cookieService:CookieService,
+              private route: ActivatedRoute
   ) {
+    this.productId = "5838ba59ac06afd79db43c9f";
+    this.sub = this.route.params.subscribe(params => {
+      console.log(params);
+      if (params.hasOwnProperty('productId')) {
+        this.productId = params['productId'];
+      }
+    });
     this.url = "https://localhost:9000/api/products"
   }
 
   public placeBid(event, bidAmount) {
     event.preventDefault();
     console.log(bidAmount);
-    let productId = "5838ba59ac06afd79db43c9f";
+    let productId = this.productId;
     let userId = "5844dc59157b7c5a65990eb4";
     let sellerId = "5844dc59157b7c5a65990eb4";
     let bidDate = console.time();
@@ -75,13 +85,12 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit() {
-    let productID = "5838ba59ac06afd79db43c9f";
     let headers = new Headers({
       'Content-Type': 'application/json',
       'Authorization': 'Basic YWRtaW46MTIzNDU='
     });
     let options = new RequestOptions({ headers: headers });
-    this.http.get(this.url + "/" + productID, options)
+    this.http.get(this.url + "/" + this.productId, options)
       .toPromise()
       .then((response) => {
         let json = response.json();

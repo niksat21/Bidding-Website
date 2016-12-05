@@ -66,6 +66,10 @@ export const routeConfig = [
     component: ProductComponent
   },
   {
+    path: 'product/:productId',
+    component: ProductComponent
+  },
+  {
     path: 'search',
     component: SearchComponent
   },
