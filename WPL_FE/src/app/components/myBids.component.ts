@@ -21,9 +21,9 @@ import {CookieService} from "angular2-cookie/services/cookies.service";
   selector: 'app-root',
   template :
     `
-    <nav-bar-after></nav-bar-after>
-    <br/><br/><br/>
- <script src="../../assets/scripts/sorttable.js"></script>
+<nav-bar-after></nav-bar-after>
+<br/><br/><br/>
+<script src="../../assets/scripts/sorttable.js"></script>
 <style>
 table {
     font-family: arial, sans-serif;
@@ -41,6 +41,7 @@ tr:nth-child(even) {
     background-color: #dddddd;
 }
 </style>
+    <br/><br/><br/>
 <table class="sortable"  border="1">
     <tr>
       <th>Product Id</th>
@@ -48,7 +49,7 @@ tr:nth-child(even) {
       <th>Seller Id</th>
       <th>Bid Amount</th>
     </tr>
-<span [innerHTML]="tableHTML"></span>
+<tbody [innerHTML]="tableHTML"></tbody>
 </table>
        
 
@@ -91,12 +92,12 @@ export class myBidsComponent implements OnInit{
         this.tableHTML = "";
         response.json().forEach(product => {
           console.log(product);
-          this.tableHTML += "<div><tr>" +
+          this.tableHTML += "<tr>" +
             "<td>"+product.productId+"</td>"+
             "<td>"+product.bidId+"</td>"+
             "<td>"+product.sellerId+"</td>"+
             "<td>"+product.bidAmount+"</td>"+
-            "</tr></div>";
+            "</tr>";
         });
 //
 

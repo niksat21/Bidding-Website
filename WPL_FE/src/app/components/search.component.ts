@@ -44,7 +44,7 @@ tr:nth-child(even) {
       <th>Price</th>
       
     </tr>
-<span [innerHTML]="tableHTML"></span>
+<tbody [innerHTML]="tableHTML"></tbody>
 </table>
 <br/><br/><br/><br/><br/><br/>
 
@@ -82,9 +82,9 @@ export class SearchComponent implements OnInit {
         response.json().forEach(product => {
           console.log(product);
           this.prodId = product.productId;
-          this.tableHTML += `<div><tr><td>${product.productId} &nbsp;&nbsp; </td>
+          this.tableHTML += `<tr><td>${product.productId} &nbsp;&nbsp; </td>
 <td>${product.productName}  &nbsp; &nbsp;</td><td>${product.productCategory} &nbsp;&nbsp;</td>
-<td>${product.price} &nbsp;&nbsp;</td></tr></div>`;
+<td>${product.price} &nbsp;&nbsp;</td></tr>`;
 
           this._cookieService.put("ProductID",product.productId);
           this._cookieService.put("sellerID",product.sellerId);
