@@ -15,6 +15,7 @@ import {postProductComponent} from "./postProducts.component";
 import {myBidsComponent} from "./myBids.component";
 import {ProductComponent} from "./product.component";
 import {SearchComponent} from "./search.component";
+import {NotFoundComponent} from "./not-found.component";
 
 
 
@@ -65,8 +66,16 @@ export const routeConfig = [
     component: ProductComponent
   },
   {
+    path: 'product/:productId',
+    component: ProductComponent
+  },
+  {
     path: 'search',
     component: SearchComponent
+  },
+  {
+    path: '**',
+    component: NotFoundComponent
   }
 
 

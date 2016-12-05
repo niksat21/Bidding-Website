@@ -23,6 +23,7 @@ export class UserService {
     this.headers.append('Content-type', 'application/json');
     this.headers.append('Accept', 'application/json');
     this.headers.append('Access-Control-Allow-Origin', '*');
+    this.headers.append('Content-Encoding', 'gzip');
   }
 
   // public GetUser = (id: string): Observable<User> => {
