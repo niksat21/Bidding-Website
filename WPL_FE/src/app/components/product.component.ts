@@ -43,8 +43,11 @@ tr:nth-child(even) {
               <tr><td> Initial Bid USD:  {{price}}</td></tr>
               <tr><td> Descriptions:  {{productName}}</td></tr>
             </tbody>
-            <form (submit)="placeBid($event, amount.value)">Place bid USD: <input #amount id="amount" type="number" ><br />
+            <form (submit)="placeBid($event, amount.value)">Place Bid USD: <input #amount id="amount" type="number"><br />
               <input type="submit" class="btn btn-success" value="Place_Bid">
+            </form>
+            <form (submit)="addToCart($event)">Buy Now
+              <input type="submit" class="btn btn-success" value="Place in Cart">
             </form>
           </table>
         </div>
@@ -103,6 +106,19 @@ export class ProductComponent implements OnInit {
       .then((response) => {
         this.updateTable(options);
       }).catch(this.handleError);
+  }
+
+  public addToCart(event) {
+    event.preventDefault();
+    let productsToBuy = "";
+    if (this._cookieService.get("cart") != null) {
+      productsToBuy = this._cookieService.get("cart") + ",";
+    }
+    if (!productsToBuy.includes(this.productId.toString())) {
+      productsToBuy += this.productId;
+    }
+
+    this._cookieService.put("cart", productsToBuy);
   }
 
   ngOnInit() {

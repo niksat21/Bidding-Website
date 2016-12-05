@@ -16,6 +16,7 @@ import {myBidsComponent} from "./myBids.component";
 import {ProductComponent} from "./product.component";
 import {SearchComponent} from "./search.component";
 import {NotFoundComponent} from "./not-found.component";
+import {CartComponent} from "./cart.component";
 
 
 
@@ -74,11 +75,13 @@ export const routeConfig = [
     component: SearchComponent
   },
   {
+    path: 'cart',
+    component: CartComponent
+  },
+  {
     path: '**',
     component: NotFoundComponent
   }
-
-
 ];
 
 @NgModule({
@@ -92,4 +95,4 @@ export class routingConfigModule{}
 
 export const routingComps = [homeComponent,registerComponent, afterlogindashboardComponent,ErrorLoginComponent,
   profileComponent,prevBidsComponent,ErrorComponent,postProductComponent,myBidsComponent, ProductComponent,
-SearchComponent];
+SearchComponent, CartComponent];
