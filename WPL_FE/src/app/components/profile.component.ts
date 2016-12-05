@@ -159,7 +159,8 @@ private userID;
 
 
         this.output =  JSON.stringify(response.json());
-        // console.log(response.json().firstName);
+        console.log("this is a name" + response.json().lastName);
+        console.log(response.json().firstName);
         console.log(this.output);
         this.split = this.output.split(",");
         this.first = this.split[2].split(":")[1].replace(/"/g,'');
