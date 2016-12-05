@@ -9,6 +9,7 @@ public class Bid implements java.io.Serializable {
     String bidId;
     String productId;
     String userId;
+    String sellerId;
     GregorianCalendar bidDate;
     double bidAmount;
 
@@ -34,6 +35,14 @@ public class Bid implements java.io.Serializable {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public String getSellerId() {
+        return sellerId;
+    }
+
+    public void setSellerId(String sellerId) {
+        this.sellerId = sellerId;
     }
 
     public GregorianCalendar getBidDate() {
