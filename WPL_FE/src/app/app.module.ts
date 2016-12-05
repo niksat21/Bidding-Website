@@ -24,6 +24,7 @@ import {prevBidsComponent} from "./components/previousBids.component";
 import {NavBarBidComponent} from "./components/navBarBid.component";
 import {CookieService} from "angular2-cookie/services/cookies.service";
 import {ErrorComponent} from "./components/error.component";
+import {postProductComponent} from "./components/postProducts.component";
 
 
 
@@ -32,7 +33,7 @@ import {ErrorComponent} from "./components/error.component";
     AppComponent,NavBarBeforeComponent,LoginComponent,carouselComponent,
     fluidComponent,dashboardListComponent,beforeLoginComponent,afterLoginComponent,afterNavBarComponent,
     LogoutComponent,NavBarRegComponent,routingComps,NavBarRegComponent,afterlogindashboardComponent,ErrorLoginComponent,
-    profileComponent,prevBidsComponent,NavBarBidComponent,ErrorComponent
+    profileComponent,prevBidsComponent,NavBarBidComponent,ErrorComponent,postProductComponent
   ],
   providers: [ CookieService ],
 
