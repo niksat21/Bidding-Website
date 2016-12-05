@@ -27,7 +27,7 @@ import {CookieService} from 'angular2-cookie/core';
             <input type="password" #password class="form-control my_littlepad" id="password" placeholder="Password">
         </div>
         <button type="submit" class="btn btn-success my_littlepad">Submit</button>
-        <li><a href="/register">Register</a></li>
+        <li><a href="/register">Register</a></li> 
     </form>
 `
 
@@ -57,35 +57,73 @@ export class LoginComponent {
     });
     let options = new RequestOptions({ headers: headers });
 
-    this.http.post('https://localhost:9000/api/auth/login', body,options)
-      .subscribe(
-        response => {
-          localStorage.setItem('id_token', response.json().id_token);
-          this.router.navigateByUrl('/dash');
-          console.log('user logged in : ',JSON.stringify(response.json()));
-          let output = JSON.stringify(response.json());
+    this.http.get('https://api.ipify.org?format=json').subscribe(
+      responseIP => {
+        let loginLocation = responseIP.json().ip;
+        body = JSON.stringify({userName,password, loginLocation });
+        this.http.post('https://localhost:9000/api/auth/login', body,options)
+          .subscribe(
+            response => {
+              localStorage.setItem('id_token', response.json().id_token);
+              this.router.navigateByUrl('/dash');
+              console.log('user logged in : ',JSON.stringify(response.json()));
+              let output = JSON.stringify(response.json());
 
-           let userID = JSON.stringify(response.json()).split(",")[0].split(":")[1].replace(/"/g,'');
-          let userName = JSON.stringify(response.json()).split(",")[1].split(":")[1].replace(/"/g,'');
-          let firstName = JSON.stringify(response.json()).split(",")[2].split(":")[1].replace(/"/g,'');
-          let lastName = JSON.stringify(response.json()).split(",")[3].split(":")[1].replace(/"/g,'');
-          let email = JSON.stringify(response.json()).split(",")[4].split(":")[1].replace(/"/g,'');
-          let lastLogin = JSON.stringify(response.json()).split(",")[6].split(":")[1].replace(/"/g,'');
-           console.log( "Pleas print me.........",JSON.stringify(response.json()).split(",")[2].split(":")[1]);
-          this.setcookie("userID",userID);
-          this.setcookie("userName",userName);
-          this.setcookie("firstName",firstName);
-          this.setcookie("lastName",lastName);
-          this.setcookie("email",email);
-          this.setcookie("lastLogin",lastLogin);
+              let userID = JSON.stringify(response.json()).split(",")[0].split(":")[1].replace(/"/g,'');
+              let userName = JSON.stringify(response.json()).split(",")[1].split(":")[1].replace(/"/g,'');
+              let firstName = JSON.stringify(response.json()).split(",")[2].split(":")[1].replace(/"/g,'');
+              let lastName = JSON.stringify(response.json()).split(",")[3].split(":")[1].replace(/"/g,'');
+              let email = JSON.stringify(response.json()).split(",")[4].split(":")[1].replace(/"/g,'');
+              let lastLogin = JSON.stringify(response.json()).split(",")[6].split(":")[1].replace(/"/g,'');
+              let lastLoginLocation = response.json().lastLoginLocation;
+              console.log( "Pleas print me.........",JSON.stringify(response.json()).split(",")[2].split(":")[1]);
+              this.setcookie("userID",userID);
+              this.setcookie("userName",userName);
+              this.setcookie("firstName",firstName);
+              this.setcookie("lastName",lastName);
+              this.setcookie("email",email);
+              this.setcookie("lastLogin",lastLogin);
+              this.setcookie("lastLoginLocation", lastLoginLocation);
 
-        },
-        error => {
-          //alert(error.text());
-          console.log(error.text());
-          this.router.navigateByUrl('/login-error');
-        }
-      );
+            },
+            error => {
+              //alert(error.text());
+              console.log(error.text());
+              this.router.navigateByUrl('/login-error');
+            }
+          );
+      }, error => {
+        this.http.post('https://localhost:9000/api/auth/login', body,options)
+          .subscribe(
+            response => {
+              localStorage.setItem('id_token', response.json().id_token);
+              this.router.navigateByUrl('/dash');
+              console.log('user logged in : ',JSON.stringify(response.json()));
+              let output = JSON.stringify(response.json());
+
+              let userID = JSON.stringify(response.json()).split(",")[0].split(":")[1].replace(/"/g,'');
+              let userName = JSON.stringify(response.json()).split(",")[1].split(":")[1].replace(/"/g,'');
+              let firstName = JSON.stringify(response.json()).split(",")[2].split(":")[1].replace(/"/g,'');
+              let lastName = JSON.stringify(response.json()).split(",")[3].split(":")[1].replace(/"/g,'');
+              let email = JSON.stringify(response.json()).split(",")[4].split(":")[1].replace(/"/g,'');
+              let lastLogin = JSON.stringify(response.json()).split(",")[6].split(":")[1].replace(/"/g,'');
+              console.log( "Pleas print me.........",JSON.stringify(response.json()).split(",")[2].split(":")[1]);
+              this.setcookie("userID",userID);
+              this.setcookie("userName",userName);
+              this.setcookie("firstName",firstName);
+              this.setcookie("lastName",lastName);
+              this.setcookie("email",email);
+              this.setcookie("lastLogin",lastLogin);
+
+            },
+            error => {
+              //alert(error.text());
+              console.log(error.text());
+              this.router.navigateByUrl('/login-error');
+            }
+          );
+      }
+    );
   }
 
 

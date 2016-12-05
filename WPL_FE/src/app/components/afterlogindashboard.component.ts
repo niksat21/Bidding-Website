@@ -20,7 +20,7 @@ import {CookieService} from "angular2-cookie/services/cookies.service";
         <nav-bar-after></nav-bar-after>
         
     <h1 class="my_margin_form">Hi, {{firstName}}</h1>
-    <p >Last Logged in at : {{lastLoginDate}}</p>
+    <p >Last Logged in at : {{lastLoginDate}} (location: ) {{lastLoginLocation}}</p>
     <nav-bar-bid></nav-bar-bid>
     
    
@@ -36,6 +36,7 @@ export class afterlogindashboardComponent {
   private lastLogin;
 
   private lastLoginDate;
+  private lastLoginLocation;
 
 
 
@@ -64,6 +65,8 @@ export class afterlogindashboardComponent {
       // if(this.firstName.isEmpty)
       //   this.firstName = this._cookieService.get("userName").replace(/"/g,'');
       this.lastLogin = this._cookieService.get("lastLogin").replace(/"/g, '');
+      this.lastLoginLocation = this._cookieService.get("lastLoginLocation") != null
+        ? this._cookieService.get("lastLoginLocation").replace(/"/g, '') : "";
       console.log(this.lastLogin);
       let temp = parseInt(this.lastLogin);
       let date = new Date(temp).toDateString();
