@@ -70,7 +70,8 @@ export class ProductComponent implements OnInit {
     let headers = new Headers({
       'Content-Type': 'application/json',
       'Authorization': 'Basic YWRtaW46MTIzNDU=',
-      "Access-Control-Allow-Origin": "*"
+      "Access-Control-Allow-Origin": "*",
+      'Content-Encoding': 'gzip'
     });
     let options = new RequestOptions({ headers: headers });
     let bidUrl = "https://localhost:9000/api/bids";
@@ -87,7 +88,8 @@ export class ProductComponent implements OnInit {
   ngOnInit() {
     let headers = new Headers({
       'Content-Type': 'application/json',
-      'Authorization': 'Basic YWRtaW46MTIzNDU='
+      'Authorization': 'Basic YWRtaW46MTIzNDU=',
+      'Content-Encoding': 'gzip'
     });
     let options = new RequestOptions({ headers: headers });
     this.http.get(this.url + "/" + this.productId, options)

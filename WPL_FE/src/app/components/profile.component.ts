@@ -146,7 +146,8 @@ private userID;
     let headers = new Headers({
       'Content-Type': 'application/json',
       'Authorization': 'Basic YWRtaW46MTIzNDU=',
-      // "Access-Control-Allow-Origin" : "*"
+      // "Access-Control-Allow-Origin" : "*",
+      'Content-Encoding': 'gzip'
     });
     let options = new RequestOptions({ headers: headers });
     this.userID=this._cookieService.get("userID");
@@ -188,7 +189,8 @@ private userID;
 
     let headers = new Headers({
       'Content-Type': 'application/json',
-      'Authorization': 'Basic YWRtaW46MTIzNDU='
+      'Authorization': 'Basic YWRtaW46MTIzNDU=',
+      'Content-Encoding': 'gzip'
     });
     let options = new RequestOptions({ headers: headers });
 

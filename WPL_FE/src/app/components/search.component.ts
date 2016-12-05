@@ -40,7 +40,8 @@ export class SearchComponent implements OnInit {
     let headers = new Headers({
       'Content-Type': 'application/json',
       'Authorization': 'Basic YWRtaW46MTIzNDU=',
-      "Access-Control-Allow-Origin": "*"
+      "Access-Control-Allow-Origin": "*",
+      'Content-Encoding': 'gzip'
     });
     let options = new RequestOptions({ headers: headers });
     let url = "https://localhost:9000/api/products/search/" + searchText;

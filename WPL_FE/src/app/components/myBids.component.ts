@@ -41,7 +41,8 @@ export class myBidsComponent implements OnInit{
 
     let headers = new Headers({
       'Content-Type': 'application/json',
-      'Authorization': 'Basic YWRtaW46MTIzNDU='
+      'Authorization': 'Basic YWRtaW46MTIzNDU=',
+      'Content-Encoding': 'gzip'
     });
     let options = new RequestOptions({ headers: headers });
     this.userID=this._cookieService.get("userID");
