@@ -60,7 +60,7 @@ export class ProductComponent implements OnInit {
     let headers = new Headers({
       'Content-Type': 'application/json',
       'Authorization': 'Basic YWRtaW46MTIzNDU=',
-      "Access-Control-Allow-Origin": "*"
+
     });
     let options = new RequestOptions({ headers: headers });
     let bidUrl = "https://localhost:9000/api/bids";

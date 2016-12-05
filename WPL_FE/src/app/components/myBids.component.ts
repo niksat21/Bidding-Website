@@ -23,7 +23,33 @@ import {CookieService} from "angular2-cookie/services/cookies.service";
     `
     <nav-bar-after></nav-bar-after>
     <br/><br/><br/>
- 
+ <script src="../../assets/scripts/sorttable.js"></script>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+<table class="sortable"  border="1">
+    <tr>
+      <th>Product Id</th>
+      <th>Bid Id</th>
+      <th>Seller Id</th>
+      <th>Bid Amount</th>
+    </tr>
+<span [innerHTML]="tableHTML"></span>
+</table>
        
 
 `
@@ -32,10 +58,16 @@ import {CookieService} from "angular2-cookie/services/cookies.service";
 export class myBidsComponent implements OnInit{
   private userID;
   private output;
-  private productID;
-  private outputProd;
-  private sellerID;
-  constructor(private http:Http,private _cookieService:CookieService,private router:Router){}
+  @Input() private tableHTML: String;
+
+  constructor(private http:Http,private _cookieService:CookieService,private router:Router){
+    this.tableHTML = `    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>`;
+  }
 
   ngOnInit(): void {
 
@@ -51,26 +83,29 @@ export class myBidsComponent implements OnInit{
         console.log(response.json());
 
         this.output =  JSON.stringify(response.json());
+        console.log('response.json().........',response.json());
         console.log('output.....',this.output);
-        // [{"bidId":"5844f07977a2bc27b0887362","productId":"5844efe377a2bc27b0887361","userId":"58422a804a3b14187c96ead0","bidDate":null}]
 
-        this.productID = this.output.split(",")[1].split(":")[1].replace(/"/g,"");
+
+        this.tableHTML = "";
+        response.json().forEach(product => {
+          console.log(product);
+          this.tableHTML += "<div><tr>" +
+            "<td>"+product.productId+"</td>"+
+            "<td>"+product.bidId+"</td>"+
+            "<td>"+product.sellerId+"</td>"+
+            "<td>"+product.bidAmount+"</td>"+
+            "</tr></div>";
+        });
+//
+
+
+
       })
       .catch(this.handleError);
 
 
-    this.http.get('https://localhost:9000/api/products/' + this.productID,options)
-      .toPromise()
-      .then((response) => {
-        console.log(response.json());
 
-        this.outputProd =  JSON.stringify(response.json());
-        console.log('output.....',this.outputProd);
-        // [{"bidId":"5844f07977a2bc27b0887362","productId":"5844efe377a2bc27b0887361","userId":"58422a804a3b14187c96ead0","bidDate":null}]
-
-        this.sellerID = this.outputProd.split(",")[1].split(":")[1].replace(/"/g,"");
-      })
-      .catch(this.handleError);
 
 
   }

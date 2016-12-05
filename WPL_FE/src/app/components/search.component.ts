@@ -40,7 +40,7 @@ export class SearchComponent implements OnInit {
     let headers = new Headers({
       'Content-Type': 'application/json',
       'Authorization': 'Basic YWRtaW46MTIzNDU=',
-      "Access-Control-Allow-Origin": "*"
+
     });
     let options = new RequestOptions({ headers: headers });
     let url = "https://localhost:9000/api/products/search/" + searchText;
@@ -51,7 +51,7 @@ export class SearchComponent implements OnInit {
         this.tableHTML = "";
         response.json().forEach(product => {
           console.log(product);
-          this.tableHTML += "<div><tr>" +
+          this.tableHTML += "<div><tr>(click)=clicked()" +
       "<td>"+product.productId+"</td>"+
             "<td>"+product.productName+"</td>"+
             "<td>"+product.productCategory+"</td>"+
