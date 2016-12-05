@@ -65,7 +65,4 @@ public class UserDAOImpl implements UserDAO {
         userRepository.delete(userId);
     }
 
-    //    public User logInUser(String username, String password) {
-    //        // returning user
-    //    }
 }
