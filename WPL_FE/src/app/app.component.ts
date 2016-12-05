@@ -32,6 +32,7 @@ import {NavBarBidComponent} from "./components/navBarBid.component";
 import {ErrorComponent} from "./components/error.component";
 import {postProductComponent} from "./components/postProducts.component";
 import {ProductComponent} from "./components/product.component";
+import {SearchComponent} from "./components/search.component";
 
 
 
@@ -52,7 +53,7 @@ import {ProductComponent} from "./components/product.component";
   declarations: [AppComponent,NavBarBeforeComponent,LoginComponent,
     carouselComponent,fluidComponent,dashboardListComponent,beforeLoginComponent,afterLoginComponent,afterNavBarComponent,
     LogoutComponent,NavBarRegComponent,afterlogindashboardComponent,ErrorLoginComponent,profileComponent,prevBidsComponent,
-    NavBarBidComponent,ErrorComponent,postProductComponent,ProductComponent],
+    NavBarBidComponent,ErrorComponent,postProductComponent,ProductComponent, SearchComponent],
   bootstrap : [AppComponent],
 
   imports : [ReactiveFormsModule,BrowserModule,FormGroup,FormControl,FormBuilder,Validators,DataTableModule]

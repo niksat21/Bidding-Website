@@ -43,15 +43,6 @@ export class afterlogindashboardComponent {
 
   constructor(private _cookieService:CookieService){
 
-
-
-    //   let first= this._cookieService.put("firstName");
-    // this.firstName=first;
-    // console.log("why me............",first);
-    // // if(this.firstName==null)
-    // //   this.firstName="unkonwn"
-    // this.lastLogin = this.getCookie("lastLogin");
-
   this.getDetails();
 
   }

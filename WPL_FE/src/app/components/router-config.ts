@@ -14,6 +14,7 @@ import {ErrorComponent} from "./error.component";
 import {postProductComponent} from "./postProducts.component";
 import {myBidsComponent} from "./myBids.component";
 import {ProductComponent} from "./product.component";
+import {SearchComponent} from "./search.component";
 
 
 
@@ -62,6 +63,10 @@ export const routeConfig = [
   {
     path: 'product',
     component: ProductComponent
+  },
+  {
+    path: 'search',
+    component: SearchComponent
   }
 
 
@@ -77,4 +82,5 @@ export const routeConfig = [
 export class routingConfigModule{}
 
 export const routingComps = [homeComponent,registerComponent, afterlogindashboardComponent,ErrorLoginComponent,
-  profileComponent,prevBidsComponent,ErrorComponent,postProductComponent,myBidsComponent, ProductComponent];
+  profileComponent,prevBidsComponent,ErrorComponent,postProductComponent,myBidsComponent, ProductComponent,
+SearchComponent];
