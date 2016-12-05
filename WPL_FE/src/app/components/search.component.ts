@@ -25,6 +25,7 @@ import {Observable} from "rxjs";
 
 export class SearchComponent implements OnInit {
   @Input() private tableHTML: String;
+  private prodId;
 
   constructor(private http:Http,private router:Router){
     this.tableHTML = `    <tr>
@@ -51,12 +52,18 @@ export class SearchComponent implements OnInit {
         this.tableHTML = "";
         response.json().forEach(product => {
           console.log(product);
+          this.prodId = product.productId;
           this.tableHTML += "<div><tr>(click)=clicked()" +
       "<td>"+product.productId+"</td>"+
             "<td>"+product.productName+"</td>"+
             "<td>"+product.productCategory+"</td>"+
             "<td>"+product.price+"</td>"+
+            "<td>"+"<span>"+"<button [id]=prodId (click)='goToProduct()'/>"+"BuyBid"+"</span>"+"</td>"+
     "</tr></div>";
+
+        //  <div style="padding-left:110px">
+         // <input type="submit" value="Submit" class="btn btn-primary"/>
+           // </div>
         });
       });
   }

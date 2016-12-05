@@ -77,7 +77,7 @@ export class ProductComponent implements OnInit {
               private router: Router,
               private _cookieService:CookieService
   ) {
-    this.url = "https://localhost:9000/api/products"
+    this.url = "https://localhost:9000/api/products";
     this.tableHTML = "";
   }
 

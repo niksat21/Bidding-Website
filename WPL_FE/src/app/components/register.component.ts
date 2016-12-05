@@ -134,7 +134,7 @@ createUser(firstName,lastName,userName,email,password) {
   let headers = new Headers({
     'Content-Type': 'application/json',
     'Authorization': 'Basic YWRtaW46MTIzNDU=',
-    'Content-Encoding': 'gzip'
+    // 'Content-Encoding': 'gzip'
   });
   let options = new RequestOptions({ headers: headers });
 

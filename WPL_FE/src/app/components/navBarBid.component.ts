@@ -29,13 +29,13 @@ import {Router} from '@angular/router'
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="/prevbids">PreviousBids</a></li>
+                    
                     
 
                     
                     
                     <li><a href="/postProducts">PostProducts</a></li>
-                    <li><a href="/sell">Sell</a></li>
+                    <li><a href="/search">SearchProducts</a></li>
                     <li><a href="/mybids">MyBids</a></li>
                     
                 </ul>
