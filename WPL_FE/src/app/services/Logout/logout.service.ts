@@ -19,7 +19,7 @@ export class LogoutService {
 
   constructor(@Inject(Http) _http: Http) {
 
-    this.url = "http://localhost:9000/api/auth/logout";
+    this.url = "https://localhost:9000/api/auth/logout";
     this.http = _http;
 
     this.headers = new Headers();

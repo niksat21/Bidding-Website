@@ -34,7 +34,7 @@ import {Router} from '@angular/router'
 
                     
                     
-                    <li><a href="/buy">Buy</a></li>
+                    <li><a href="/postProducts">PostProducts</a></li>
                     <li><a href="/sell">Sell</a></li>
                     <li><a href="/mybids">MyBids</a></li>
                     

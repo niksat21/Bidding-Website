@@ -10,7 +10,7 @@ import {Router,RouterModule} from '@angular/router';
 import {User} from "./services/user";
 import {Login} from "./services/Login/login"
 import {Logout} from "./services/Logout/logout"
-
+import {CookieService} from 'angular2-cookie/core';
 // Add the RxJS Observable operators.
 // import './rxjs-operators';
 import {UserService} from "./services/user.service";
@@ -29,6 +29,8 @@ import {ErrorLoginComponent} from "./components/LoginError.component";
 import {profileComponent} from "./components/profile.component";
 import {prevBidsComponent} from "./components/previousBids.component";
 import {NavBarBidComponent} from "./components/navBarBid.component";
+import {ErrorComponent} from "./components/error.component";
+import {postProductComponent} from "./components/postProducts.component";
 
 
 @Component({
@@ -48,8 +50,9 @@ import {NavBarBidComponent} from "./components/navBarBid.component";
   declarations: [AppComponent,NavBarBeforeComponent,LoginComponent,
     carouselComponent,fluidComponent,dashboardListComponent,beforeLoginComponent,afterLoginComponent,afterNavBarComponent,
     LogoutComponent,NavBarRegComponent,afterlogindashboardComponent,ErrorLoginComponent,profileComponent,prevBidsComponent,
-    NavBarBidComponent],
+    NavBarBidComponent,ErrorComponent,postProductComponent],
   bootstrap : [AppComponent],
+
   imports : [ReactiveFormsModule,BrowserModule,FormGroup,FormControl,FormBuilder,Validators,DataTableModule]
 
 })
@@ -58,4 +61,15 @@ import {NavBarBidComponent} from "./components/navBarBid.component";
 
 export class AppComponent {
 
+  constructor(private _cookieService:CookieService){}
+
+  getcookie(key : string){
+
+      this._cookieService.get(key);
+
+  }
+
+  setcookie(key :string,value:string){
+    this._cookieService.put(key,value);
+  }
 }
