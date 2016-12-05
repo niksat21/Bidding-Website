@@ -45,7 +45,7 @@ export class myBidsComponent implements OnInit{
     });
     let options = new RequestOptions({ headers: headers });
     this.userID=this._cookieService.get("userID");
-    this.http.get('https://localhost:9000/api/bids/user/' + this.userID,options)
+    this.http.get('https://localhost:9000/api/bids/user/'+this.userID,options)
       .toPromise()
       .then((response) => {
         console.log(response.json());
@@ -78,7 +78,6 @@ export class myBidsComponent implements OnInit{
     console.log(error);
     return Observable.throw('Server error');
   }
-
 
 
 
